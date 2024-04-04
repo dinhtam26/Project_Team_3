@@ -1,0 +1,19 @@
+{
+    "folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../ProjectOne-main"
+		},
+		{
+			"path": "../../DuAn1"
+		},
+		{
+			"path": "../../PHP_Zend"
+		}
+	],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "Project_one"
+    }
+}
