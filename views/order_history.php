@@ -3,10 +3,6 @@
         font-size: 20px;
     }
 
-    .totalPrice {
-        /* margin-top: 50px; */
-    }
-
     .E_bb9k {
         background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/orderlist/5fafbb923393b712b964.png);
         background-position: 50%;
@@ -33,15 +29,36 @@ foreach ($listOrderByStatus as $key => $value) {
                     <div class="cart-info">
                         <div class="cart-info__top">
                             <ul style="width: 100%;display: flex; justify-content: space-around;">
-                                <?php if (isset($_GET['status'])) {
+                                <?php if (!isset($_GET['status'])) { ?>
 
-                                ?>
+                                    <li>
+                                        <a href="<?= ROOT_URL ?>?act=order-history&status=all">Tất cả</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="<?= ROOT_URL ?>?act=order-history&status=0">Chờ xác nhận </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= ROOT_URL ?>?act=order-history&status=1">Vận chuyển </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= ROOT_URL ?>?act=order-history&status=2">Chờ giao hàng </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= ROOT_URL ?>?act=order-history&status=3">Hoàn thành </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= ROOT_URL ?>?act=order-history&status=-1">Đã Hủy </a>
+                                    </li>
+
+
+                                <?php } else { ?>
+
                                     <li>
                                         <a <?php if ($_GET['status'] == 'all') {
                                                 echo 'style="color: red"';
                                             } ?> href="<?= ROOT_URL ?>?act=order-history&status=all">Tất cả</a>
                                     </li>
-
                                     <li>
                                         <a <?php if ($_GET['status'] == '0') {
                                                 echo 'style="color: red"';
@@ -92,6 +109,7 @@ foreach ($listOrderByStatus as $key => $value) {
 
                     ?>
                         <?php
+
                         foreach ($listOrderByOrderID as $key1 => $items) {
 
 
@@ -163,7 +181,7 @@ foreach ($listOrderByStatus as $key => $value) {
                                         <p style="font-size: 20px; font-weight: 600; ">Thành tiền: <span style="color: #dc3545 "><?= number_format($total) ?></span></p>
                                     </div>
                                     <div style="display: flex; justify-content: flex-end;">
-                                        <a href="<?= ROOT_URL ?>?act=order-detail" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
+                                        <a href="<?= ROOT_URL ?>?act=order-detail&id=<?= $key1 ?>" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
                                         <a href="javascript:confirmCancel('<?= ROOT_URL ?>?act=orders-canceled&id=<?= $key1 ?>')" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #dc3545; font-size: 18px">Hủy đơn hàng</a>
                                     </div>
                                 <?php } else { ?>
@@ -281,13 +299,6 @@ foreach ($listOrderByStatus as $key => $value) {
         </div>
     </div>
 </div>
-
-<?php
-echo "<pre/>";
-print_r($listOrderByOrder);
-echo "<pre/>";
-
-?>
 
 <script>
     function confirmCancel(delUrl) {

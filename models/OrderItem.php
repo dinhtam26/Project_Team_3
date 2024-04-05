@@ -47,4 +47,12 @@ function statusCancel($id)
     $sql = "UPDATE `order` SET status_delivery = '-1' WHERE id = '$id'";
     pdo_execute($sql);
 }
+// Lấy thông tin địa chỉ theo đơn hàng
+function getInfoOrder($id)
+{
+    $sql = "SELECT * FROM `order` WHERE `order`.id = '$id'";
+    $infoOrder = singleRecord($sql);
+    return $infoOrder;
+}
+
 ?>

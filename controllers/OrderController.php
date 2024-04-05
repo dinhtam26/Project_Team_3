@@ -24,7 +24,7 @@ function orderPurchase()
         $data['total_price']        = total_price(false);
         $data['status_delivery']    = STATUS_DELIVERY_WFC;
         $data['code_order']         = randomStr();
-        $data['create_at']          = date("Y-m-d H:i:s");
+        $data['create_at']          = date("H:i d-m-Y");
 
 
         if ($_POST['status_payment'] == 0) {
@@ -89,14 +89,15 @@ function orderMomo()
     require_once PATH_VIEW . "momo/handle.php";
 }
 
-function orderDetail()
+function orderDetail($id)
 {
     $arrParams = [
         'view'      => "order_detail",
         'title'     => "Chi tiết đơn hàng",
     ];
-
-    $listHistoryOrder = getHistoryOrder($_SESSION['user']['id']);
+    $listProductByOrderID   = getProductByOrderId($id);
+    $infoOrder              = getInfoOrder($id);
+    // $listHistoryOrder = getHistoryOrder($_SESSION['user']['id']);
 
     require_once PATH_VIEW . "layout/master.php";
 }
