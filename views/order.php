@@ -22,13 +22,13 @@
          line-height: 100%;
      }
 
-     a {
+     /* a {
          min-width: 160px;
          padding: 12px 16px;
          display: inline-block;
          text-align: center;
          border-radius: 999px;
-     }
+     } */
  </style>
  <form action="<?= ROOT_URL ?>?act=order-purchase" method="post" class="form cart-info__form">
      <main class="checkout-page">
@@ -163,13 +163,12 @@
                              <!-- <h2 class="cart-info__heading cart-info__heading--lv2">Phương thức thanh toán</h2> -->
                              <div style="display: flex; justify-content: space-between">
                                  <!-- Quay lại -->
-                                 <a style=" background-color: #c4c8cb; " href="<?= ROOT_URL ?>?act=cart-list">Quay lại</a>
+                                 <a style=" background-color: #c4c8cb;  min-width: 160px; padding: 12px 16px; display: inline-block;text-align: center; border-radius: 999px;" href="<?= ROOT_URL ?>?act=cart-list">Quay lại</a>
                                  <!-- Tiếp tục mua hàng -->
-                                 <a style=" background-color: #a3cfbb" href="<?= ROOT_URL ?>">Tiếp tục mua hàng</a>
+                                 <a style=" background-color: #a3cfbb; min-width: 160px; padding: 12px 16px; display: inline-block;text-align: center; border-radius: 999px;" href="<?= ROOT_URL ?>">Tiếp tục mua hàng</a>
                                  <!-- Lịch sử đơn hàng -->
-                                 <a style=" background-color: #cff4fc" href="<?= ROOT_URL ?>?act=order-detail">Lịch sử các đơn hàng</a>
+                                 <a style=" background-color: #cff4fc; min-width: 160px; padding: 12px 16px; display: inline-block;text-align: center; border-radius: 999px;" href="<?= ROOT_URL ?>?act=order-history">Lịch sử các đơn hàng</a>
                              </div>
-
 
                          </div>
                          <?= $error ?? "" ?>

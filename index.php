@@ -28,7 +28,8 @@ $arrRouteNeedAuth = [
     'order-purchase',
     'order-success',
     "comment",
-    "order-detail"
+    "order-detail",
+    "orders-canceled"
 ];
 middleware_auth_check($act, $arrRouteNeedAuth);
 // Kiểm tra xem user đã đăng nhập chưa
@@ -63,6 +64,8 @@ $page = match ($act) {
     "order-purchase"    => orderPurchase(),
     "order-success"     => orderSuccess(),
     "order-detail"      => orderDetail(),
+    "order-history"     => orderHistory($_GET['status'] ?? ""),
+    "orders-canceled"   => OrderCanceled($_GET['id'] ?? ""),
     "orderMomo"         => orderMomo(),
 };
 

@@ -24,7 +24,7 @@ function orderPurchase()
         $data['total_price']        = total_price(false);
         $data['status_delivery']    = STATUS_DELIVERY_WFC;
         $data['code_order']         = randomStr();
-        $data['create_at']          = date("d-m-Y");
+        $data['create_at']          = date("Y-m-d H:i:s");
 
 
         if ($_POST['status_payment'] == 0) {
@@ -98,5 +98,33 @@ function orderDetail()
 
     $listHistoryOrder = getHistoryOrder($_SESSION['user']['id']);
 
+    require_once PATH_VIEW . "layout/master.php";
+}
+
+
+function orderHistory($status)
+{
+    $arrParams = [
+        'view'      => "order_history",
+        'title'     => "Lịch sử đơn hàng",
+    ];
+
+    $listHistoryOrder = getHistoryOrder($_SESSION['user']['id']);
+    $listOrderByStatus = getOrderByStatus($status, $_SESSION['user']['id']);
+    require_once PATH_VIEW . "layout/master.php";
+}
+
+
+function OrderCanceled($id_order)
+{
+    $arrParams = [
+        'view'      => "order_history",
+        'title'     => "Lịch sử đơn hàng",
+    ];
+
+    if (isset($_GET['id'])) {
+        statusCancel($id_order);
+        header("Location: " . ROOT_URL . "?act=order-history&status=-1");
+    }
     require_once PATH_VIEW . "layout/master.php";
 }

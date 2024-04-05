@@ -95,4 +95,3 @@
     </div>
 </main>
 <?php
-debug($_SESSION);

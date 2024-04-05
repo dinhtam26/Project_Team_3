@@ -215,7 +215,7 @@ $userInfo = getUserByID($user['id']);
 
                             <ul class="user-menu__list">
                                 <li>
-                                    <a href="<?= ROOT_URL ?>?act=profile" class="user-menu__link">Profile</a>
+                                    <a href="<?= ROOT_URL ?>?act=order-checkout" class="user-menu__link">Đơn hàng</a>
                                 </li>
                                 <!-- <li>
                                     <a href="./favourite.html" class="user-menu__link">Favourite list</a>

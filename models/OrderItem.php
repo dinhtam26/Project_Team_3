@@ -2,12 +2,49 @@
 <?php
 function getHistoryOrder($userID)
 {
-    $sql = "SELECT `o`.code_order, `o`.status_payment, `od`.quantity, `od`.price, `p`.name, `p`.`image` FROM `order_detail` AS `od` 
+    $sql = "SELECT `o`.code_order, `o`.status_delivery ,`o`.create_at, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name FROM `order_detail` AS `od` 
     INNER JOIN `order`      AS `o`  ON `o`.id               = `od`.order_id
     INNER JOIN `variation`  AS `vr` ON `od`.variation_id    = `vr`.id
     INNER JOIN `products`  AS `p` ON `vr`.`product_id`    = `p`.id  
-    WHERE `o`.user_id = '$userID'";
+    INNER JOIN `categories`  AS `c` ON `c`.`id`    = `p`.cate_id
+    WHERE `o`.user_id = '$userID'
+    ORDER BY `o`.id DESC";
     $listHistoryOrder = listRecord($sql);
     return  $listHistoryOrder;
+}
+
+function getProductByOrderId($order_id)
+{
+    $sql = "SELECT `o`.code_order,`o`.create_at, `o`.status_delivery, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name FROM `order_detail` AS `od` 
+    INNER JOIN `order`      AS `o`  ON `o`.id               = `od`.order_id
+    INNER JOIN `variation`  AS `vr` ON `od`.variation_id    = `vr`.id
+    INNER JOIN `products`  AS `p` ON `vr`.`product_id`    = `p`.id  
+    INNER JOIN `categories`  AS `c` ON `c`.`id`    = `p`.cate_id
+    WHERE `od`.order_id = '$order_id'";
+
+    $listHistoryOrder = listRecord($sql);
+    return  $listHistoryOrder;
+}
+
+// Lấy sản phẩm theo status
+function getOrderByStatus($status, $userID)
+{
+    $sql = "SELECT `o`.code_order,`o`.create_at, `o`.status_delivery, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name FROM `order_detail` AS `od` 
+    INNER JOIN `order`      AS `o`  ON `o`.id               = `od`.order_id
+    INNER JOIN `variation`  AS `vr` ON `od`.variation_id    = `vr`.id
+    INNER JOIN `products`  AS `p` ON `vr`.`product_id`    = `p`.id  
+    INNER JOIN `categories`  AS `c` ON `c`.`id`    = `p`.cate_id
+    WHERE `o`.status_delivery = '$status'
+    AND `o`.user_id = '$userID'
+    ";
+
+    $listOrderByStatus = listRecord($sql);
+    return $listOrderByStatus;
+}
+
+function statusCancel($id)
+{
+    $sql = "UPDATE `order` SET status_delivery = '-1' WHERE id = '$id'";
+    pdo_execute($sql);
 }
 ?>
