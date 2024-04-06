@@ -62,6 +62,15 @@ $page = match ($act) {
     "image-create" => createImage(),
     "image-update" => updateImage($_GET['id']),
     "image-delete" => deleteImage($_GET['id']),
+
+    // Comment
+    "comment"        => listCommentAll(),
+    "comment-delete" => deleteComment($_GET['id']),
+
+    // Order
+    "orders"            => listOrderAll(),
+    "order-show"        => showOrder($_GET['id']),
+    "order-update"      => updateOrder($_GET['id'])
 };
 
 echo $page;
