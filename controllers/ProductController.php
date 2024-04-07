@@ -13,7 +13,7 @@ function products()
 }
 
 
-function productDetail($id, $sizeId)
+function productDetail($id, $sizeId, $colorID)
 {
     $arrParams = [
         'view' => "product_detail",

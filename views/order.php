@@ -87,6 +87,8 @@
                                          <th>Hình ảnh</th>
                                          <th>Tên sản phẩm</th>
                                          <th>Giá</th>
+                                         <th>Kích thước</th>
+                                         <th>Màu sắc</th>
                                          <th>Số lượng</th>
                                          <th>Tổng giá</th>
                                      </tr>
@@ -94,13 +96,18 @@
                                  <tbody>
                                      <?php if (isset($_SESSION['cart'])) :
                                             foreach ($_SESSION['cart'] as $item) :
+                                                $colorName = getColorName($item['color']);
+                                                $sizeName = getsizeName($item['size']);
+
                                         ?>
                                              <tr style="align-items: center; border-top: 1px solid #ccc; ">
-                                                 <td style=" width: 15%"><img width="60" src="<?= ROOT_UPLOAD_URL ?><?= $item['image'] ?>" alt=""></td>
-                                                 <td style="width: 40%"><?= $item['name'] ?></td>
-                                                 <td style="width: 15%;"><?= number_format($item['price']) ?></td>
-                                                 <td style="width: 15%;"><?= $item['quantity'] ?></td>
-                                                 <td style="width: 15%; font-weight: 600"><?= number_format($item['price'] * $item['quantity']) ?></td>
+                                                 <td><img width="60" src="<?= ROOT_UPLOAD_URL ?><?= $item['image'] ?>" alt=""></td>
+                                                 <td><?= $item['name'] ?></td>
+                                                 <td><?= number_format($item['price']) ?></td>
+                                                 <td><?= $sizeName['name'] ?></td>
+                                                 <td><?= $colorName['name'] ?></td>
+                                                 <td><?= $item['quantity'] ?></td>
+                                                 <td style="font-weight: 600"> <?= number_format($item['price'] * $item['quantity']) ?></td>
                                              </tr>
                                      <?php endforeach;
                                         endif ?>

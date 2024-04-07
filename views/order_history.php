@@ -157,10 +157,17 @@ foreach ($listOrderByStatus as $key => $value) {
                                                         <img src="<?= ROOT_UPLOAD_URL . $value['image'] ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
                                                     </div>
                                                     <div>
-                                                        <p><?= $value['name'] ?></p>
+                                                        <span><?= $value['name'] ?></span>
+                                                        <span style="margin: 10px; ">x<?= $value['quantity'] ?></span>
                                                         <p style="margin-top: 10px; color: #a39a9a">Phân loại:<?= $value['cate_name'] ?></p>
-                                                        <p style="margin: 10px; ">x<?= $value['quantity'] ?></p>
-                                                        <p>Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px"><?= number_format($value['price']) ?></span></p>
+                                                        <?php
+                                                        $sizeName = getSizeName($value['size_id']);
+                                                        $colorName = getColorName($value['color_id']);
+                                                        ?>
+                                                        <p style="margin-top: 8px">Color: <?= $colorName['name'] ?> </p>
+                                                        <p style="margin-top: 8px">Màu sắc: <?= $sizeName['name'] ?> </p>
+
+                                                        <p>Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px; margin-top: 8px"><?= number_format($value['price']) ?></span></p>
                                                     </div>
                                                 </div>
                                                 <div style="margin-right: 20px; text-wrap: nowrap;">
@@ -189,7 +196,7 @@ foreach ($listOrderByStatus as $key => $value) {
                                         <p style="font-size: 20px; font-weight: 600; ">Thành tiền: <span style="color: #dc3545 "><?= number_format($total) ?></span></p>
                                     </div>
                                     <div style="display: flex; justify-content: flex-end;">
-                                        <a href="<?= ROOT_URL ?>?act=order-detail" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
+                                        <a href="<?= ROOT_URL ?>?act=order-detail&id=<?= $key1 ?>" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
                                     </div>
                                 <?php }  ?>
                             </div>
@@ -244,9 +251,15 @@ foreach ($listOrderByStatus as $key => $value) {
                                                             <img src="<?= ROOT_UPLOAD_URL . $value['image'] ?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
                                                         </div>
                                                         <div>
-                                                            <p><?= $value['name'] ?></p>
+                                                            <span><?= $value['name'] ?></span>
+                                                            <span style="margin: 10px; ">x<?= $value['quantity'] ?></span>
                                                             <p style="margin-top: 10px; color: #a39a9a">Phân loại:<?= $value['cate_name'] ?></p>
-                                                            <p style="margin: 10px; ">x<?= $value['quantity'] ?></p>
+                                                            <?php
+                                                            $sizeName = getSizeName($value['size_id']);
+                                                            $colorName = getColorName($value['color_id']);
+                                                            ?>
+                                                            <p style="margin-top: 8px">Color: <?= $colorName['name'] ?> </p>
+                                                            <p style="margin-top: 8px">Màu sắc: <?= $sizeName['name'] ?> </p>
                                                             <p>Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px"><?= number_format($value['price']) ?></span></p>
                                                         </div>
                                                     </div>
@@ -269,7 +282,7 @@ foreach ($listOrderByStatus as $key => $value) {
                                             <p style="font-size: 20px; font-weight: 600; ">Thành tiền: <span style="color: #dc3545 "><?= number_format($total) ?></span></p>
                                         </div>
                                         <div style="display: flex; justify-content: flex-end;">
-                                            <a href="<?= ROOT_URL ?>?act=order-detail" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
+                                            <a href="<?= ROOT_URL ?>?act=order-detail&id=<?= $keys  ?>" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
                                             <a href="javascript:confirmCancel('<?= ROOT_URL ?>?act=orders-canceled&id=<?= $keys ?>')" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #dc3545; font-size: 18px">Hủy đơn hàng</a>
 
                                         </div>
@@ -278,7 +291,7 @@ foreach ($listOrderByStatus as $key => $value) {
                                             <p style="font-size: 20px; font-weight: 600; ">Thành tiền: <span style="color: #dc3545 "><?= number_format($total) ?></span></p>
                                         </div>
                                         <div style="display: flex; justify-content: flex-end;">
-                                            <a href="<?= ROOT_URL ?>?act=order-detail" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
+                                            <a href="<?= ROOT_URL ?>?act=order-detail&id=<?= $keys  ?>" style="margin-top: 50px; display: inline-block; padding: 12px 16px; color: #fff; background: #77dae6; font-size: 18px; margin-right: 10px">Xem chi tiết</a>
                                         </div>
                                     <?php }  ?>
                                 </div>

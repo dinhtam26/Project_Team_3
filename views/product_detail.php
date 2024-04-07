@@ -102,13 +102,18 @@
                                             <?php
                                             if (!isset($_GET['size_id'])) {
 
-                                                foreach ($color as $key => $value) {
-                                                    echo  '<a href="#" class="form__tag prod-info__tag">' . $value['name'] . '</a>';
+                                                foreach ($color as $key => $value) { ?>
+                                                    <a href="#" class="form__tag prod-info__tag"><?= $value['name'] ?></a>
+                                                <?php
                                                 }
                                             } else {
-                                            ?>
+                                                ?>
                                                 <?php foreach ($colorBySize as $key => $value) : ?>
-                                                    <a href="#" class="form__tag prod-info__tag"><?= $value['name'] ?></a>
+                                                    <?php if (isset($_GET['color_id']) && $_GET['color_id'] == $value['id']) {  ?>
+                                                        <a href="<?= ROOT_URL ?>?act=product-detail&id=<?= $getOneProduct['id'] ?>&size_id=<?= $_GET['size_id'] ?>&color_id=<?= $value['id'] ?>" style="border: 1px solid green; color: #000" class="form__tag prod-info__tag"><?= $value['name'] ?></a>
+                                                    <?php  } else { ?>
+                                                        <a href="<?= ROOT_URL ?>?act=product-detail&id=<?= $getOneProduct['id'] ?>&size_id=<?= $_GET['size_id'] ?>&color_id=<?= $value['id'] ?>" class="form__tag prod-info__tag"><?= $value['name'] ?></a>
+                                                    <?php } ?>
                                                     <!-- <button class="form__tag prod-info__tag">Medium</button>
                                             <button class="form__tag prod-info__tag">Large</button> -->
                                             <?php endforeach;
@@ -147,9 +152,17 @@
                                             ?>
                                             <p class="prod-info__total-price"><?= number_format($price, 0, ',', '.') ?></p>
                                             <div class="prod-info__row">
-                                                <a href="<?= ROOT_URL ?>?act=cart-add&productID=<?= $getOneProduct['id'] ?>&quantity=1" class="btn btn--primary prod-info__add-to-cart">
-                                                    Add to cart
-                                                </a>
+                                                <!-- Điều kiện -->
+                                                <?php if ((empty($_GET['size_id'])) || empty($_GET['color_id'])) { ?>
+                                                    <a href="<?= ROOT_URL ?>?act=cart-add&productID=<?= $getOneProduct['id'] ?>&quantity=1&size=<?= $_GET['size_id'] ?? "" ?>&color=<?= $_GET['color_id'] ?? "" ?>" style="pointer-events: none; opacity: 0.5;" class="btn btn--primary prod-info__add-to-cart">
+                                                        Add to cart
+                                                    </a>
+
+                                                <?php } else { ?>
+                                                    <a href="<?= ROOT_URL ?>?act=cart-add&productID=<?= $getOneProduct['id'] ?>&quantity=1&size=<?= $_GET['size_id'] ?? "" ?>&color=<?= $_GET['color_id'] ?? "" ?>" class="btn btn--primary prod-info__add-to-cart">
+                                                        Add to cart
+                                                    </a>
+                                                <?php } ?>
                                                 <button class="like-btn prod-info__like-btn">
                                                     <img src="<?= ROOT_ASSET_URL ?>client//assets/icons/heart.svg" alt="" class="like-btn__icon icon" />
                                                     <img src="<?= ROOT_ASSET_URL ?>client//assets/icons/heart-red.svg" alt="" class="like-btn__icon--liked" />
@@ -362,4 +375,5 @@
 // echo "<pre/>";
 // print_r($breadcrumbs);
 // echo "<pre/>";
+
 ?>

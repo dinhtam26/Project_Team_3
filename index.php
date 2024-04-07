@@ -46,14 +46,14 @@ $page = match ($act) {
     "products"       => products(),
 
     // Chi tiết sản phẩm
-    "product-detail"    => productDetail($_GET['id'],  $_GET['size_id'] ?? ""),
+    "product-detail"    => productDetail($_GET['id'],  $_GET['size_id'] ?? "", $_GET['color_id'] ?? ""),
     // Lọc sản phẩm theo danh mục
     "categories"        => categoriesHome($_GET['id'], $_GET['cate_son'] ?? ""),
     "profile"           => profile(),
     "comment"           => comment($_GET['id']),
 
     // Xử lí thêm sản phẩm
-    "cart-add"          => cartAdd($_GET['productID'], $_GET['quantity']),
+    "cart-add"          => cartAdd($_GET['productID'], $_GET['quantity'], $_GET['size'], $_GET['color']),
     "cart-list"         => cartList(),
     "cart-inc"          => cartInc($_GET['productID']),
     "cart-dec"          => cartDec($_GET['productID']),

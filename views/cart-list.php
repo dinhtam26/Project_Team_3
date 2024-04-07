@@ -87,6 +87,12 @@
                                                             </div>
                                                         </a>
                                                     </div>
+                                                    <div>
+                                                        <?php $sizeName = getSizeName($value['size']) ?>
+                                                        <p style="margin: 10px 0;">Size: <?= $sizeName['name'] ?></p>
+                                                        <?php $colorName = getColorName($value['color']); ?>
+                                                        <p>Color: <?= $colorName['name'] ?></p>
+                                                    </div>
                                                 </div>
                                                 <div class="cart-item__content-right">
                                                     <p class="cart-item__total-price"><?= number_format(($value['price'] * $value['quantity']), 0, ",", ".") ?></p>
@@ -183,3 +189,6 @@
     </div>
 </main>
 <?php
+echo "<pre/>";
+print_r($_SESSION['cart']);
+echo "<pre/>";

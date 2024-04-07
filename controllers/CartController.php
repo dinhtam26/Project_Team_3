@@ -1,5 +1,5 @@
 <?php
-function cartAdd($productID, $quantity = 0)
+function cartAdd($productID, $quantity = 0, $size, $color)
 {
     // Kiểm tra xem có tồn tại product với id kia không
     $product = getOneProduct($productID);
@@ -17,6 +17,11 @@ function cartAdd($productID, $quantity = 0)
         $_SESSION['cart'][$productID] = $product;
         $_SESSION['cart'][$productID]['userID'] = $_SESSION['user']['id'];
         $_SESSION['cart'][$productID]['quantity']   = $quantity;
+        $_SESSION['cart'][$productID]['size']   = $size;
+        $_SESSION['cart'][$productID]['color']   = $color;
+
+
+
 
         // $data = [
         //     'cart_id'       => $cartID,
@@ -48,6 +53,7 @@ function cartList()
     // debug($_SESSION['cart']);
     $cartID = getCartId($_SESSION['user']['id']);
     $listProductInCart = getAllProductForUserIdInCartItem($cartID);
+
     // $_SESSION['cart'] = [];
     // $_SESSION['cart'] = array_merge($_SESSION['cart'], $listProductInCart);
 

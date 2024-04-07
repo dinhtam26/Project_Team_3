@@ -29,6 +29,8 @@
                             <th>Mã đơn hàng</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh sản phẩm</th>
+                            <th>Kích thước</th>
+                            <th>Màu sắc</th>
                             <th>Số lượng</th>
                             <th>Giá</th>
                             <th>Danh mục</th>
@@ -37,11 +39,17 @@
                     </thead>
 
                     <tbody>
-                        <?php foreach ($listProductByOrderID as $item) : ?>
+                        <?php foreach ($listProductByOrderID as $item) :
+                            $colorName  = getColorName($item['color_id']);
+                            $sizeName   = getSizeName($item['size_id']);
+
+                        ?>
                             <tr style="text-align: center;">
                                 <td><?= $item['code_order'] ?></td>
                                 <td><?= $item['name'] ?></td>
                                 <td><img width="60px" src="<?= ROOT_UPLOAD_URL . $item['image'] ?>" alt=""></td>
+                                <td><?= $sizeName['name'] ?></td>
+                                <td><?= $colorName['name'] ?></td>
                                 <td><?= $item['quantity'] ?></td>
                                 <td><?= number_format($item['price']) ?></td>
                                 <td><?= $item['cate_name'] ?></td>

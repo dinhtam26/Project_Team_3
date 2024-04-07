@@ -29,10 +29,16 @@
                                 <img src="<?= ROOT_UPLOAD_URL . $item['image'] ?>" style="width: 120px; height: 120px; object-fit: cover;" alt="">
                             </div>
                             <div>
-                                <p style="font-size: 18px;"><?= $item['name'] ?></p>
+                                <span style="font-size: 18px;"><?= $item['name'] ?></span>
+                                <span style="margin: 15px; font-size: 18px;">x <?= $item['quantity'] ?></span>
                                 <p style="margin-top: 15px; color: #a39a9a; font-size: 18px;">Phân loại: <?= $item['cate_name'] ?></p>
-                                <p style="margin: 15px; font-size: 18px;">x <?= $item['quantity'] ?></p>
-                                <p style="font-size: 18px;">Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px;"><?= $item['price'] ?></span></p>
+                                <div>
+                                    <?php $sizeName = getSizeName($item['size_id']) ?>
+                                    <p style="margin: 10px 0;">Size: <?= $sizeName['name'] ?></p>
+                                    <?php $colorName = getColorName($item['color_id']); ?>
+                                    <p>Color: <?= $colorName['name'] ?></p>
+                                </div>
+                                <p style="font-size: 18px; margin-top: 10px">Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px;"><?= $item['price'] ?></span></p>
                             </div>
                         </div>
 

@@ -16,3 +16,17 @@ function getCartByUserID($userID)
     $cartByUserID = singleRecord($sql);
     return $cartByUserID;
 }
+
+function getColorName($colorID)
+{
+    $sql = "SELECT name FROM `color` WHERE  `color`.id = '$colorID'";
+    $colorName = singleRecord($sql);
+    return $colorName;
+}
+
+function getSizeName($sizeID)
+{
+    $sql = "SELECT name FROM `size` WHERE  `size`.id = '$sizeID'";
+    $sizeName = singleRecord($sql);
+    return $sizeName;
+}

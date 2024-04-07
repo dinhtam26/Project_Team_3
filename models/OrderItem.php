@@ -2,7 +2,7 @@
 <?php
 function getHistoryOrder($userID)
 {
-    $sql = "SELECT `o`.code_order, `o`.status_delivery ,`o`.create_at, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name FROM `order_detail` AS `od` 
+    $sql = "SELECT `o`.code_order, `o`.status_delivery ,`o`.create_at, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name, `vr`.color_id, `vr`.size_id FROM `order_detail` AS `od` 
     INNER JOIN `order`      AS `o`  ON `o`.id               = `od`.order_id
     INNER JOIN `variation`  AS `vr` ON `od`.variation_id    = `vr`.id
     INNER JOIN `products`  AS `p` ON `vr`.`product_id`    = `p`.id  
@@ -15,7 +15,7 @@ function getHistoryOrder($userID)
 
 function getProductByOrderId($order_id)
 {
-    $sql = "SELECT `o`.code_order,`o`.create_at, `o`.status_delivery, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name FROM `order_detail` AS `od` 
+    $sql = "SELECT `o`.code_order,`o`.create_at, `o`.status_delivery, `od`.quantity, `od`.price, `p`.name, `p`.`image`,`od`.order_id, `c`.name AS cate_name, `vr`.color_id, `vr`.size_id FROM `order_detail` AS `od` 
     INNER JOIN `order`      AS `o`  ON `o`.id               = `od`.order_id
     INNER JOIN `variation`  AS `vr` ON `od`.variation_id    = `vr`.id
     INNER JOIN `products`  AS `p` ON `vr`.`product_id`    = `p`.id  

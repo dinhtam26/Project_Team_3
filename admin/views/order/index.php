@@ -23,7 +23,7 @@
             ?>
             <div class="table-responsive">
 
-                <table class="table " id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Mã đơn hàng</th>
@@ -53,15 +53,15 @@
                     <tbody>
                         <?php foreach ($listOrder as $key => $value) :
                             if ($value['status_delivery'] == 0) {
-                                $message = "<p style='border-radius: 5px; width: 180px' class= 'bg-secondary text-white'>chờ xác nhận</p>";
+                                $message = "<p style='border-radius: 5px; width: 150px' class= 'bg-secondary p-2 text-white'>chờ xác nhận</p>";
                             } else if ($value['status_delivery'] == 1) {
-                                $message = "<p style='border-radius: 5px; width: 180px' class= 'bg-info p-2 text-white'>Chờ lấy hàng</p>";
+                                $message = "<p style='border-radius: 5px; width: 150px' class= 'bg-info p-2 text-white'>Chờ lấy hàng</p>";
                             } else if ($value['status_delivery'] == 2) {
-                                $message = "<p style='border-radius: 5px;  width: 180px' class= 'bg-primary p-2 text-white'>Chờ giao hàng</p>";
+                                $message = "<p style='border-radius: 5px;  width: 150px' class= 'bg-primary p-2 text-white'>Chờ giao hàng</p>";
                             } else if ($value['status_delivery'] == 3) {
-                                $message = "<p style='border-radius: 5px;  width: 180px' class= 'bg-success p-2 text-white'>Đã giao hàng thành công</p>";
+                                $message = "<p style='border-radius: 5px;  width: 150px' class= 'bg-success p-2 text-white'>Đã giao hàng thành công</p>";
                             } else if ($value['status_delivery'] == -1) {
-                                $message = "<p style='border-radius: 5px;  width: 180px' class= 'bg-danger p-2 text-white'>Đơn hàng đã bị hủy</p>";
+                                $message = "<p style='border-radius: 5px;  width: 150px' class= 'bg-danger p-2 text-white'>Đơn hàng đã bị hủy</p>";
                             }
                         ?>
                             <tr>
