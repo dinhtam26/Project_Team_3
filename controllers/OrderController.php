@@ -32,7 +32,7 @@ function orderPurchase()
             foreach ($_SESSION['cart'] as $item) {
                 $orderDetail = [
                     'order_id'     =>  $orderID,
-                    "variation_id" =>  $item['vr_id'],
+                    "variation_id" =>  $item['variation'],
                     "price"        => $item['price'],
                     "quantity"     => $item['quantity'],
                 ];
@@ -53,7 +53,7 @@ function orderPurchase()
             foreach ($_SESSION['cart'] as $item) {
                 $orderDetail = [
                     'order_id'     =>  $orderID,
-                    "variation_id" =>  $item['vr_id'],
+                    "variation_id" =>  $item['variation'],
                     "price"        => $item['price'],
                     "quantity"     => $item['quantity'],
                 ];

@@ -7,6 +7,7 @@ function cartAdd($productID, $quantity = 0, $size, $color)
         debug("404 not found");
     }
 
+    $variationID = getVariationByColorIdAndSizeId($color, $size);
     // Kiểm tra trong bảng carts đã có bảng ghi nào của user đang đăng nhập chưa
     // Có rồi thì lấy ra cartID, nếu chưa thì tạo mới
     $cartID = getCartId($_SESSION['user']['id']);
@@ -17,6 +18,7 @@ function cartAdd($productID, $quantity = 0, $size, $color)
         $_SESSION['cart'][$productID] = $product;
         $_SESSION['cart'][$productID]['userID'] = $_SESSION['user']['id'];
         $_SESSION['cart'][$productID]['quantity']   = $quantity;
+        $_SESSION['cart'][$productID]['variation']   = $variationID['id'];
         $_SESSION['cart'][$productID]['size']   = $size;
         $_SESSION['cart'][$productID]['color']   = $color;
 

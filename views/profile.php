@@ -23,7 +23,7 @@
                           <!-- User -->
                           <div class="profile-user">
                               <?php
-                                if ($userInfo == "user/") { ?>
+                                if ($userInfo['avatar'] == "") { ?>
                                   <img width="60" src="<?= ROOT_UPLOAD_URL ?>product/avatar.png" alt="" class="" />
                               <?php } else { ?>
                                   <img style="border-radius: 50%; object-fit: cover; height: 60px" width="60" src="<?= ROOT_UPLOAD_URL ?><?= $userInfo['avatar'] ?>" alt="" />

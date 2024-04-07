@@ -30,3 +30,10 @@ function getSizeName($sizeID)
     $sizeName = singleRecord($sql);
     return $sizeName;
 }
+
+function getVariationByColorIdAndSizeId($color, $size)
+{
+    $sql = "SELECT `vr`.id  FROM `variation` AS `vr` WHERE  `vr`.color_id = '$color' AND `vr`.size_id = '$size'";
+    $sizeName = singleRecord($sql);
+    return $sizeName;
+}

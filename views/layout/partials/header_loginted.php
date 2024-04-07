@@ -189,7 +189,7 @@ $userInfo = getUserByID($user['id']);
 
                 <div class="top-act__user">
                     <?php
-                    if ($userInfo['avatar'] == "user/") { ?>
+                    if ($userInfo['avatar'] == "") { ?>
                         <img width="50" src="<?= ROOT_UPLOAD_URL ?>product/avatar.png" alt="" class="" />
                     <?php } else { ?>
                         <img style="border-radius: 50%; object-fit: cover; height: 50px" width="50" src="<?= ROOT_UPLOAD_URL ?><?= $userInfo['avatar'] ?>" alt="" />
@@ -202,7 +202,7 @@ $userInfo = getUserByID($user['id']);
                             <div class="user-menu__top">
 
                                 <?php
-                                if ($userInfo['avatar'] == "user/") { ?>
+                                if ($userInfo['avatar'] == "") { ?>
                                     <img width="60" src="<?= ROOT_UPLOAD_URL ?>product/avatar.png" alt="" class="" />
                                 <?php } else { ?>
                                     <img style="border-radius: 50%; object-fit: cover; height: 50px" width="50" src="<?= ROOT_UPLOAD_URL ?><?= $userInfo['avatar'] ?>" alt="" />
@@ -217,9 +217,9 @@ $userInfo = getUserByID($user['id']);
                                 <li>
                                     <a href="<?= ROOT_URL ?>?act=order-checkout" class="user-menu__link">Đơn hàng</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="./favourite.html" class="user-menu__link">Favourite list</a>
-                                </li> -->
+                                <li class="user-menu__separate">
+                                    <a href="<?= ROOT_URL ?>?act=profile" class="user-menu__link">Profile</a>
+                                </li>
                                 <li class="user-menu__separate">
                                     <a href="#!" class="user-menu__link" id="switch-theme-btn">
                                         <span>Dark mode</span>
@@ -241,5 +241,3 @@ $userInfo = getUserByID($user['id']);
     </div>
 </header>
 <?php
-// debug($_SESSION);
-?>

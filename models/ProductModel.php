@@ -37,10 +37,11 @@ function getProductByCate($id)
 function getOneProduct($id)
 {
     // Láy tất cả giá trị trong bảng products và lấy thêm price, quantity, sale bên bảng variation
-    $sql = "SELECT `p`.*,  `vr`.price, `vr`.quantity, `vr`.sale,`vr`.color_id, `vr`.size_id, `vr`.id AS vr_id
+    $sql = "SELECT `p`.*,  `vr`.price, `vr`.quantity, `vr`.sale 
     FROM `products` AS `p`
     LEFT JOIN `variation` AS `vr` ON `p`.id = `vr`.product_id
     WHERE `p`.id = '$id'";
+
     $product = singleRecord($sql);
     return $product;
 }

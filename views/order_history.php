@@ -164,8 +164,8 @@ foreach ($listOrderByStatus as $key => $value) {
                                                         $sizeName = getSizeName($value['size_id']);
                                                         $colorName = getColorName($value['color_id']);
                                                         ?>
-                                                        <p style="margin-top: 8px">Color: <?= $colorName['name'] ?> </p>
-                                                        <p style="margin-top: 8px">Màu sắc: <?= $sizeName['name'] ?> </p>
+                                                        <p style="margin-top: 8px">Màu sắc: <?= $colorName['name'] ?> </p>
+                                                        <p style="margin-top: 8px">Kích thước: <?= $sizeName['name'] ?> </p>
 
                                                         <p>Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px; margin-top: 8px"><?= number_format($value['price']) ?></span></p>
                                                     </div>
@@ -258,8 +258,8 @@ foreach ($listOrderByStatus as $key => $value) {
                                                             $sizeName = getSizeName($value['size_id']);
                                                             $colorName = getColorName($value['color_id']);
                                                             ?>
-                                                            <p style="margin-top: 8px">Color: <?= $colorName['name'] ?> </p>
-                                                            <p style="margin-top: 8px">Màu sắc: <?= $sizeName['name'] ?> </p>
+                                                            <p style="margin-top: 8px">Màu sắc: <?= $colorName['name'] ?> </p>
+                                                            <p style="margin-top: 8px">Kích thước: <?= $sizeName['name'] ?> </p>
                                                             <p>Giá: <span style="color: #77dae6; font-weight: 600; margin-top: 10px"><?= number_format($value['price']) ?></span></p>
                                                         </div>
                                                     </div>
