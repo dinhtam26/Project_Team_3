@@ -49,13 +49,13 @@
                                     if ($value['userID'] == $_SESSION['user']['id']) {
                             ?>
                                         <article class="cart-item">
-                                            <a href="./product-detail.html">
+                                            <a href="<?= ROOT_URL ?>?act=product-detail&id=<?= $value['id'] ?>">
                                                 <img src="<?= ROOT_UPLOAD_URL . $value['image'] ?>" alt="" class="cart-item__thumb" />
                                             </a>
                                             <div class="cart-item__content">
                                                 <div class="cart-item__content-left">
                                                     <h3 class="cart-item__title">
-                                                        <a href="./product-detail.html">
+                                                        <a href="<?= ROOT_URL ?>?act=product-detail&id=<?= $value['id'] ?>">
                                                             <?= $value['name'] ?>
                                                         </a>
                                                     </h3>
@@ -64,7 +64,7 @@
                                                     </p>
                                                     <div class="cart-item__ctrl cart-item__ctrl--md-block">
                                                         <!-- Trừ -->
-                                                        <a href="<?= ROOT_URL . '?act=cart-dec&productID=' . $value['id'] ?>" class="btn btn-danger">
+                                                        <a href="<?= ROOT_URL . '?act=cart-dec&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="btn btn-danger">
                                                             <div class="cart-item__input">
                                                                 -
                                                             </div>
@@ -81,7 +81,7 @@
                                                         </div>
 
                                                         <!-- Cộng -->
-                                                        <a href="<?= ROOT_URL . '?act=cart-inc&productID=' . $value['id'] ?>" class="btn btn-danger">
+                                                        <a href="<?= ROOT_URL . '?act=cart-inc&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="btn btn-danger">
                                                             <div class="cart-item__input">
                                                                 +
                                                             </div>
@@ -98,7 +98,7 @@
                                                     <p class="cart-item__total-price"><?= number_format(($value['price'] * $value['quantity']), 0, ",", ".") ?></p>
                                                     <div class="cart-item__ctrl">
 
-                                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="<?= ROOT_URL . '?act=cart-del&productID=' . $value['id'] ?>" class="cart-item__ctrl-btn js-toggle" toggle-target="#delete-confirm">
+                                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="<?= ROOT_URL . '?act=cart-del&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="cart-item__ctrl-btn js-toggle" toggle-target="#delete-confirm">
                                                             <img src="./assets/icons/trash.svg" alt="" />
                                                             <span style="display: inline-block; padding: 8px 12px; background: #de2323; border-radius: 6px; color: #fff">Xóa</span>
                                                         </a>
@@ -188,5 +188,3 @@
         </div>
     </div>
 </main>
-
-<?php

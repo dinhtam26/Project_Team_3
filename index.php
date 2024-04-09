@@ -56,9 +56,9 @@ $page = match ($act) {
     // Xử lí thêm sản phẩm
     "cart-add"          => cartAdd($_GET['productID'], $_GET['quantity'], $_GET['size'], $_GET['color']),
     "cart-list"         => cartList(),
-    "cart-inc"          => cartInc($_GET['productID']),
-    "cart-dec"          => cartDec($_GET['productID']),
-    "cart-del"          => cartDel($_GET['productID']),
+    "cart-inc"          => cartInc($_GET['productID'], $_GET['size'], $_GET['color']),
+    "cart-dec"          => cartDec($_GET['productID'], $_GET['size'], $_GET['color']),
+    "cart-del"          => cartDel($_GET['productID'], $_GET['size'], $_GET['color']),
 
     // Order
     "order-checkout"    => orderCheckout(),

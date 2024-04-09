@@ -9,6 +9,8 @@ function cartAdd($productID, $quantity = 0, $size, $color)
         debug("404 not found");
     }
 
+
+
     $variationID = getVariationByColorIdAndSizeId($color, $size, $productID);
     // Kiểm tra trong bảng carts đã có bảng ghi nào của user đang đăng nhập chưa
     // Có rồi thì lấy ra cartID, nếu chưa thì tạo mới
@@ -69,53 +71,58 @@ function cartList()
 }
 
 
-function cartInc($productID)
+function cartInc($productID, $size, $color)
 {
     // Kiểm tra sản phẩm có tồn tại không
     $product = getOneProduct($productID);
     if (empty($product)) {
         debug("404 not found");
     }
+
+    $productKey = $productID . "-" . $size . "-" . $color;
+
+
     // Tăng số lượng lên 1
-    if (isset($_SESSION['cart'][$productID])) {
-        $qtyTMP = $_SESSION['cart'][$productID]['quantity']   += 1;
+    if (isset($_SESSION['cart'][$productKey])) {
+        $qtyTMP = $_SESSION['cart'][$productKey]['quantity']   += 1;
 
-        updateQuantityByCartAndProductId($_SESSION['cartID'], $productID, $qtyTMP);
+        updateQuantityByCartAndProductId($_SESSION['cartID'], $productKey, $qtyTMP);
     }
     header("Location: " . ROOT_URL . "?act=cart-list");
     exit();
 }
 
-function cartDec($productID)
+function cartDec($productID, $size, $color)
 {
     // Kiểm tra sản phẩm có tồn tại không
     $product = getOneProduct($productID);
     if (empty($product)) {
         debug("404 not found");
     }
+    $productKey = $productID . "-" . $size . "-" . $color;
     // Giảm số lượng xuống 1
-    if (isset($_SESSION['cart'][$productID]) && $_SESSION['cart'][$productID]['quantity'] > 1) {
-        $qtyTMP = $_SESSION['cart'][$productID]['quantity']   -= 1;
+    if (isset($_SESSION['cart'][$productKey]) && $_SESSION['cart'][$productKey]['quantity'] > 1) {
+        $qtyTMP = $_SESSION['cart'][$productKey]['quantity']   -= 1;
 
-        updateQuantityByCartAndProductId($_SESSION['cartID'], $productID, $qtyTMP);
+        updateQuantityByCartAndProductId($_SESSION['cartID'], $productKey, $qtyTMP);
     }
     header("Location: " . ROOT_URL . "?act=cart-list");
     exit();
 }
 
-function cartDel($productID)
+function cartDel($productID, $size, $color)
 {
     // Kiểm tra sản phẩm có tồn tại không
     $product = getOneProduct($productID);
     if (empty($product)) {
         debug("404 not found");
     }
-
+    $productKey = $productID . "-" . $size . "-" . $color;
     // Xóa bản ghi trong session và cart-items
-    if (isset($_SESSION['cart'][$productID])) {
-        unset($_SESSION['cart'][$productID]);
+    if (isset($_SESSION['cart'][$productKey])) {
+        unset($_SESSION['cart'][$productKey]);
 
-        deleteCartItemsByCartIDAndProductID($_SESSION['cartID'], $productID);
+        deleteCartItemsByCartIDAndProductID($_SESSION['cartID'], $productKey);
     }
     header("Location: " . ROOT_URL . "?act=cart-list");
     exit();
