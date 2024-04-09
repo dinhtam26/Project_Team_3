@@ -1,4 +1,6 @@
 <?php
+
+
 function cartAdd($productID, $quantity = 0, $size, $color)
 {
     // Kiểm tra xem có tồn tại product với id kia không
@@ -12,15 +14,19 @@ function cartAdd($productID, $quantity = 0, $size, $color)
     // Có rồi thì lấy ra cartID, nếu chưa thì tạo mới
     $cartID = getCartId($_SESSION['user']['id']);
     $_SESSION['cartID'] = $cartID;
+
+    //Tạo một khóa duy nhất cho sản phẩm dựa trên productID, size, color
+    $productKey = $productID . "-" . $size . "-" . $color;
+
     // Thêm sản phẩm vào session cart: $_SESSION['cart']['$productID'] = $product
     // Tiếp tục thêm sản phẩm vào cart_items 
-    if (!isset($_SESSION['cart'][$productID])) {
-        $_SESSION['cart'][$productID] = $product;
-        $_SESSION['cart'][$productID]['userID'] = $_SESSION['user']['id'];
-        $_SESSION['cart'][$productID]['quantity']   = $quantity;
-        $_SESSION['cart'][$productID]['variation']   = $variationID['id'];
-        $_SESSION['cart'][$productID]['size']   = $size;
-        $_SESSION['cart'][$productID]['color']   = $color;
+    if (!isset($_SESSION['cart'][$productKey])) {
+        $_SESSION['cart'][$productKey] = $product;
+        $_SESSION['cart'][$productKey]['userID'] = $_SESSION['user']['id'];
+        $_SESSION['cart'][$productKey]['quantity']   = $quantity;
+        $_SESSION['cart'][$productKey]['variation']   = $variationID['id'];
+        $_SESSION['cart'][$productKey]['size']   = $size;
+        $_SESSION['cart'][$productKey]['color']   = $color;
 
 
 
@@ -33,7 +39,7 @@ function cartAdd($productID, $quantity = 0, $size, $color)
         // insert($data, 'cart-items');
         insertCartItems($cartID, $productID, $quantity);
     } else {
-        $qtyTMP = $_SESSION['cart'][$productID]['quantity']   += $quantity;
+        $qtyTMP = $_SESSION['cart'][$productKey]['quantity']   += $quantity;
 
         updateQuantityByCartAndProductId($cartID, $productID, $qtyTMP);
     }
