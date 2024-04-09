@@ -1,20 +1,6 @@
 <div class="container" style="background-color: #f6f6f6; margin-bottom: 30px">
     <div style="background: #eeeeee; margin-top: 30px; padding: 20px; border-radius: 16px" class="rounded p-3 mt-5">
-        <ul class="d-flex align-items-center" style="list-style: none; margin-bottom: 0px">
-            <?php
-            $xhtml = "";
-            foreach ($listCateParent as $key => $value) {
-                if ($value['id'] = $_GET['id']) {
-                    $xhtml .= '<li>
-                                <a class="text-decoration-none" style="color: #828b95" href="#">' . $value['name'] . ' <i class="fa-solid fa-chevron-right ms-2"></i></a>
-                            </li>';
-                    break;
-                }
-            }
-
-
-            echo $xhtml;
-            ?>
+        <!-- <ul class="d-flex align-items-center" style="list-style: none; margin-bottom: 0px">
 
             <li style="margin-left: 12px">
                 <a class="text-decoration-none" style="color: #828b95" href="#">Coffee <i class="fa-solid fa-chevron-right ms-2"></i></a>
@@ -25,7 +11,7 @@
             <li style="margin-left: 12px">
                 <a class="text-decoration-none text-dark" href="#">LavAzza</a>
             </li>
-        </ul>
+        </ul> -->
     </div>
 
     <!--  -->

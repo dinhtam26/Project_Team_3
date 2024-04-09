@@ -88,3 +88,16 @@ function sigUp()
 
     require_once PATH_VIEW . "layout/master.php";
 }
+
+
+function forgetPassword()
+{
+    $arrParams = [
+        'view'  => "layout/forget_password",
+        'title' => "Quên mật khẩu",
+        'act'   => "login",
+    ];
+
+
+    require_once PATH_VIEW . "layout/master.php";
+}

@@ -140,3 +140,4 @@
 
 </div>
 <!-- // Mã đơn hàng(order) Hình ảnh(product) Tên sản phẩm(product) Số lượng(order_detail) Giá sản phẩm(order_detail) Phương thức thanh toán -->
+<?php

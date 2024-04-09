@@ -3,3 +3,5 @@ NGUYEN VAN A
 9704 0000 0000 0018
 03 / 07
 OTP
+
+// Cần sửa lỗi thêm cùng 1 sản phẩm mà màu sắc hoặc size khác nhau thì phải là 2 sản phẩm trong giỏ hàng

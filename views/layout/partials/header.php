@@ -73,7 +73,7 @@
                         <a style="font-weight: 600; font-size: 20px;" class="nav-link" href="#">Giới thiệu</a>
                     </li>
                     <li class="nav-item">
-                        <a style="font-weight: 600; font-size: 20px;" class="nav-link" href="#">Contact</a>
+                        <a style="font-weight: 600; font-size: 20px;" class="nav-link" href="#">Liên hệ</a>
                     </li>
                 </ul>
 
@@ -81,9 +81,9 @@
 
 
                 <!-- Search -->
-                <form action="<?= ROOT_URL ?>?act=search" method="post" style="margin-left: 6rem;">
-                    <input type="text" name="keyword" placeholder="Search..." class="tukhoa">
-                    <button type="submit" class="tim">Search</button>
+                <form action="<?= ROOT_URL ?>?act=search" method="post" style="margin-left: 5rem;">
+                    <input type="text" name="keyword" placeholder="Tìm kiếm..." class="tukhoa">
+                    <button type="submit" class="tim">Tìm kiếm</button>
                 </form>
                 <!-- Actions -->
                 <div class="top-act">

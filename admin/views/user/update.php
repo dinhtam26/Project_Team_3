@@ -14,7 +14,7 @@
                     <div class="container">
                         <!-- Tiêu đề trang -->
                         <!-- Form nhập liệu -->
-                        <?php if (isset($_SESSION['success']) && !empty($_SESSION['errors'])) { ?>
+                        <?php if (isset($_SESSION['success']) || !empty($_SESSION['errors'])) { ?>
                             <div class="alert alert-success">
                                 <?= $_SESSION['success'] ?>
                             </div>
@@ -136,4 +136,5 @@
 </div>
 <?php
 if (isset($_SESSION['data'])) unset($_SESSION['data']);
+
 ?>

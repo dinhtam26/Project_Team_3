@@ -37,9 +37,9 @@
             <div class="row gy-xl-3">
                 <div class="col-8 col-xl-12">
                     <div class="cart-info">
-                        <h1 class="cart-info__heading">1. Shipping, arrives between Mon, May 16—Tue, May 24</h1>
+                        <h1 class="cart-info__heading">Sản phẩm trong giỏ hàng</h1>
                         <div class="cart-info__separate"></div>
-                        <h2 class="cart-info__sub-heading">Items details</h2>
+                        <h2 class="cart-info__sub-heading">Sản phẩm chi tiết</h2>
                         <div class="cart-info__list">
                             <!-- Cart item 1 -->
                             <?php
@@ -91,7 +91,7 @@
                                                         <?php $sizeName = getSizeName($value['size']) ?>
                                                         <p style="margin: 10px 0;">Size: <?= $sizeName['name'] ?></p>
                                                         <?php $colorName = getColorName($value['color']); ?>
-                                                        <p>Color: <?= $colorName['name'] ?></p>
+                                                        <p>Màu sắc: <?= $colorName['name'] ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="cart-item__content-right">
@@ -100,7 +100,7 @@
 
                                                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="<?= ROOT_URL . '?act=cart-del&productID=' . $value['id'] ?>" class="cart-item__ctrl-btn js-toggle" toggle-target="#delete-confirm">
                                                             <img src="./assets/icons/trash.svg" alt="" />
-                                                            Delete
+                                                            <span style="display: inline-block; padding: 8px 12px; background: #de2323; border-radius: 6px; color: #fff">Xóa</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -126,7 +126,7 @@
                                     <div class="cart-info__continue">
                                         <a href="<?= ROOT_URL ?>" class="cart-info__continue-link">
                                             <img class="cart-info__continue-icon icon" src="./assets/icons/arrow-down-2.svg" alt="" />
-                                            Continue Shopping
+                                            <span style="display: inline-block; padding: 8px 12px; background: #79dae6; border-radius: 6px; color: #fff">Tiếp tục mua hàng</span>
                                         </a>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                 <span><?= count($_SESSION['cart']); ?></span>
                             </div>
                             <div class="cart-info__row">
-                                <span>Price <span class="cart-info__sub-label">(Total)</span></span>
+                                <span>Tổng tiền<span class="cart-info__sub-label"></span></span>
                                 <?php if (!empty($_SESSION['cart'])) {
                                     $total = 0;
                                     foreach ($_SESSION['cart'] as $key => $value) {
@@ -155,16 +155,16 @@
                                 <span><?= number_format($total, 0, ",", ".") ?> VND</span>
                             </div>
                             <div class="cart-info__row">
-                                <span>Shipping</span>
-                                <span>$10.00</span>
+                                <span>Tiền ship</span>
+                                <span>0</span>
                             </div>
                             <div class="cart-info__separate"></div>
                             <div class="cart-info__row">
-                                <span>Estimated Total</span>
+                                <span>Tổng tiền phải trả</span>
                                 <span><?= number_format($total, 0, ",", ".") ?> VND</span>
                             </div>
                             <a href="<?= ROOT_URL ?>?act=order-checkout" class="cart-info__next-btn btn btn--primary btn--rounded">
-                                Continue to checkout
+                                Xác nhận mua hàng
                             </a>
                         </div>
                         <div class="cart-info">
@@ -193,4 +193,3 @@
 echo "<pre/>";
 print_r($_SESSION['cart']);
 echo "<pre/>";
-?>

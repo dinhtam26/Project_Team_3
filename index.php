@@ -40,6 +40,7 @@ $page = match ($act) {
     "user-login"    => sigIn(),
     "user-sigUp"    => sigUp(),
     "user-logout"   => logOut(),
+    "forget-password" => forgetPassword(),
     "search"        => searchProduct(),
 
     // Trang sản phẩm

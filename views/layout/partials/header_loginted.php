@@ -29,15 +29,15 @@ $userInfo = getUserByID($user['id']);
                     <a style="font-weight: 600; font-size: 20px;" class="nav-link" href="#">Giới thiệu</a>
                 </li>
                 <li class="nav-item">
-                    <a style="font-weight: 600; font-size: 20px;" class="nav-link" href="#">Contact</a>
+                    <a style="font-weight: 600; font-size: 20px;" class="nav-link" href="#">Liên hệ</a>
                 </li>
             </ul>
             <div class="navbar__overlay js-toggle" toggle-target="#navbar"></div>
 
             <!-- Search -->
             <form action="<?= ROOT_URL ?>?act=search" method="post" style="margin-left: 80px;">
-                <input type="text" name="keyword" placeholder="Search..." style="border: 1px solid #ccc; padding: 8px; border-radius: 6px;">
-                <button type="submit" class="tim" style="color: #fff; background-color: #77dae6; padding: 10px; border-radius: 6px">Search</button>
+                <input type="text" name="keyword" placeholder="Tìm kiếm..." style="border: 1px solid #ccc; padding: 8px; border-radius: 6px;">
+                <button type="submit" class="tim" style="color: #fff; background-color: #77dae6; padding: 10px; border-radius: 6px">Tìm kiếm</button>
             </form>
             <!-- Actions -->
             <div class="top-act">
@@ -108,8 +108,20 @@ $userInfo = getUserByID($user['id']);
 
                     <div class="top-act__btn-wrap">
                         <button class="top-act__btn">
+
+
                             <img src="<?= ROOT_ASSET_URL ?>client/assets/icons/buy.svg" alt="" class="icon top-act__icon" />
-                            <!-- <span class="top-act__title">$65.42</span> -->
+                            <?php if (!empty($_SESSION['cart'])) {
+                                $total = 0;
+                                $quantityTotal = 0;
+                                foreach ($_SESSION['cart'] as $key => $value) {
+                                    $total += ($value['price'] * $value['quantity']);
+                                    $quantityTotal +=  $value['quantity'];
+                                }
+                            ?>
+                                <span style="display: inline-block; padding: 8px; background: #77dae6; border-radius: 4px; color: #fff"><?= $quantityTotal ?></span>
+
+                            <?php } ?>
                         </button>
 
                         <!-- Dropdown -->
@@ -215,7 +227,7 @@ $userInfo = getUserByID($user['id']);
 
                             <ul class="user-menu__list">
                                 <li>
-                                    <a href="<?= ROOT_URL ?>?act=order-checkout" class="user-menu__link">Đơn hàng</a>
+                                    <a href="<?= ROOT_URL ?>?act=order-history" class="user-menu__link">Đơn hàng</a>
                                 </li>
                                 <li class="user-menu__separate">
                                     <a href="<?= ROOT_URL ?>?act=profile" class="user-menu__link">Profile</a>
@@ -240,4 +252,3 @@ $userInfo = getUserByID($user['id']);
         </div>
     </div>
 </header>
-<?php

@@ -115,14 +115,14 @@
 
                           <!-- Menu 4 -->
                           <div class="profile-menu">
-                              <h3 class="profile-menu__title">Customer Service</h3>
+                              <h3 class="profile-menu__title">Tài khoản của tôi</h3>
                               <ul class="profile-menu__list">
                                   <li>
                                       <a href="#!" class="profile-menu__link">
                                           <span class="profile-menu__icon">
                                               <img src="./assets/icons/info.svg" alt="" class="icon" />
                                           </span>
-                                          Help
+                                          Hồ sơ
                                       </a>
                                   </li>
                                   <li>
@@ -130,7 +130,23 @@
                                           <span class="profile-menu__icon">
                                               <img src="./assets/icons/danger.svg" alt="" class="icon" />
                                           </span>
-                                          Terms of Use
+                                          Ngân hàng
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#!" class="profile-menu__link">
+                                          <span class="profile-menu__icon">
+                                              <img src="./assets/icons/danger.svg" alt="" class="icon" />
+                                          </span>
+                                          Địa chỉ
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#!" class="profile-menu__link">
+                                          <span class="profile-menu__icon">
+                                              <img src="./assets/icons/danger.svg" alt="" class="icon" />
+                                          </span>
+                                          Mật khẩu
                                       </a>
                                   </li>
                               </ul>

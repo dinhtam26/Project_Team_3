@@ -14,9 +14,14 @@
             <a href="<?= ROOT_URL_ADMIN ?>?act=user-create" class="text-white btn bg-success">Add New User</a>
         </div>
         <div class="card-body">
-            <?php if (isset($_SESSION['success'])) { ?>
+            <?php if (isset($_COOKIE['success'])) { ?>
                 <div class="alert alert-success">
-                    <?= $_SESSION['success'] ?>
+                    <?= $_COOKIE['success'] ?>
+                </div>
+            <?php } ?>
+            <?php if (isset($_COOKIE['message'])) { ?>
+                <div class="alert alert-success">
+                    <?= $_COOKIE['message'] ?>
                 </div>
             <?php } ?>
             <div class="table-responsive">
@@ -99,3 +104,4 @@
         </ul>
     </div>
 </div>
+<?php

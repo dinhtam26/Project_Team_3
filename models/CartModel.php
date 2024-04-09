@@ -31,9 +31,9 @@ function getSizeName($sizeID)
     return $sizeName;
 }
 
-function getVariationByColorIdAndSizeId($color, $size)
+function getVariationByColorIdAndSizeId($color, $size, $productID)
 {
-    $sql = "SELECT `vr`.id  FROM `variation` AS `vr` WHERE  `vr`.color_id = '$color' AND `vr`.size_id = '$size'";
+    $sql = "SELECT `vr`.id  FROM `variation` AS `vr` WHERE  `vr`.color_id = '$color' AND `vr`.size_id = '$size' AND `vr`.product_id = '$productID'";
     $sizeName = singleRecord($sql);
     return $sizeName;
 }

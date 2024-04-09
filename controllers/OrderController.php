@@ -30,6 +30,7 @@ function orderPurchase()
         if ($_POST['status_payment'] == 0) {
             $orderID = insert_lastID($data, 'order');
             foreach ($_SESSION['cart'] as $item) {
+
                 $orderDetail = [
                     'order_id'     =>  $orderID,
                     "variation_id" =>  $item['variation'],

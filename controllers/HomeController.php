@@ -37,7 +37,7 @@ function categoriesHome($id, $cate_son)
 function profile()
 {
     $arrParams = [
-        'view' => "profile",
+        'view' => "profile/profile",
         'title' => "Profile"
     ];
 

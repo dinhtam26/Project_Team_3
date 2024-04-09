@@ -82,10 +82,11 @@ function insertUser()
             if (!empty($avatar)) {
                 $data['avatar']  = upload_file($avatar, "user");
             } else {
-                $data['avatar'] = "user/avatar.png";
+                $data['avatar'] = "product/avatar.png";
             }
             insert($data, "user");
-            $_SESSION['success'] = "Thao tác thành công";
+            setcookie("success", "Thao tác thành công", time() + 3);
+
             header("Location: " . ROOT_URL_ADMIN . "?act=users");
             exit();
         }
@@ -191,7 +192,7 @@ function editUser($id)
             'password'  => $_POST['password'] ?? null,
             'email'     => $_POST['email'] ?? null,
             'phone'     => $_POST['phone'] ?? null,
-            'avatar'    => $_POST['avatar'] ?? null,
+            'avatar'    => $_POST['avatar'] ?? "",
             'address'   => $_POST['address'] ?? null,
             'create_at' => $_POST['create_at'] ?? null,
             'type'      => $_POST['type'] ?? null,
@@ -203,11 +204,11 @@ function editUser($id)
             $_SESSION['errors'] = $errors;
             $_SESSION['data']   = $data;
         } else {
-            $avatar = $_FILES['avatar'] ?? null;
+            $avatar = $_FILES['avatar'] ?? "";
             if (!empty($avatar)) {
                 $data['avatar']  = upload_file($avatar, "user");
             } else {
-                $data['avatar'] = "user/avatar.png";
+                $data['avatar'] = "product/avatar.png";
             }
 
             update($data, 'user', $id);
@@ -300,12 +301,53 @@ function delete_user($id)
 {
     if (isset($id)) {
         $user = getOneUser($id);
-        delete('user', $id);
-        if (!empty($user['avatar']) && file_exists(PATH_UPLOAD . $user['avatar'])) {
-            unlink(PATH_UPLOAD . $user['avatar']);
+        $userOnlineCart     = exitsUserOnlineWebsiteCarts($id);
+        $userOnlineComment  = exitsUserOnlineWebsiteByComment($id);
+        $userOnlineOrder    = exitsUserOnlineWebsiteByOrder($id);
+        if ($userOnlineCart == true || $userOnlineComment == true || $userOnlineOrder == true) {
+            setcookie("message", "Tài khoản này đã và đang hoạt động trên trang web, bạn không thể xóa được", time() + 2);
+        } else {
+            delete('user', $id);
+            if (!empty($user['avatar']) && file_exists(PATH_UPLOAD . $user['avatar'])) {
+                unlink(PATH_UPLOAD . $user['avatar']);
+            }
+            setcookie("success", "Thao tác thành công", time() + 3);
         }
-        $_SESSION['success'] = "Thao tác thành công";
         header("Location: " . ROOT_URL_ADMIN . "?act=users");
         exit();
     }
+}
+
+// Kiểm tra người dùng đã hoạt động trang web chưa: người dùng đã bình luận, đặt hàng
+function exitsUserOnlineWebsiteCarts($user_id)
+{
+    $flag = false;
+    $sql = "SELECT `user_id` FROM `carts` WHERE `user_id` = '$user_id'";
+    $user = singleRecord($sql);
+    if (!empty($user)) {
+        $flag = true; // Đã tồn tại
+    }
+    return $flag;
+}
+
+function exitsUserOnlineWebsiteByComment($user_id)
+{
+    $flag = false;
+    $sql = "SELECT `user_id` FROM `comment` WHERE `user_id` = '$user_id'";
+    $user = singleRecord($sql);
+    if (!empty($user)) {
+        $flag = true; // Đã tồn tại
+    }
+    return $flag;
+}
+
+function exitsUserOnlineWebsiteByOrder($user_id)
+{
+    $flag = false;
+    $sql = "SELECT `user_id` FROM `order` WHERE `user_id` = '$user_id'";
+    $user = singleRecord($sql);
+    if (!empty($user)) {
+        $flag = true; // Đã tồn tại
+    }
+    return $flag;
 }

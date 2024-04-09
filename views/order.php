@@ -243,9 +243,7 @@
          </div>
      </main>
  </form>
-
- <?PHP
+ <?php
     echo "<pre/>";
     print_r($_SESSION['cart']);
     echo "<pre/>";
-    ?>

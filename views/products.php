@@ -1,6 +1,6 @@
 <div class="container" style="background-color: #f6f6f6; margin-bottom: 30px">
     <div style="background: #eeeeee; margin-top: 30px; padding: 20px; border-radius: 16px" class="rounded p-3 mt-5">
-        <ul class="d-flex align-items-center" style="list-style: none; margin-bottom: 0px">
+        <!-- <ul class="d-flex align-items-center" style="list-style: none; margin-bottom: 0px">
             <li>
                 <a class="text-decoration-none" style="color: #828b95" href="#">Departments <i class="fa-solid fa-chevron-right ms-2"></i></a>
             </li>
@@ -13,7 +13,7 @@
             <li style="margin-left: 12px">
                 <a class="text-decoration-none text-dark" href="#">LavAzza</a>
             </li>
-        </ul>
+        </ul> -->
     </div>
 
     <!--  -->
@@ -33,7 +33,6 @@
         <div class="col-9" style="margin-top: 30px">
             <div class="">
                 <div>
-
                     <a href="#" style="display: inline-block;min-width: 100px; border: 1px solid #ccc; padding: 8px; border-radius: 999px;text-align: center">Áo khoác</a>
                     <a href="#" style="display: inline-block; min-width: 100px; border: 1px solid #ccc; padding: 8px; border-radius: 999px;text-align: center; margin-left: 8px">Áo nen</a>
                     <a href="#" style="display: inline-block;min-width: 100px; border: 1px solid #ccc; padding: 8px; border-radius: 999px;text-align: center;margin-left: 8px">Áo lỉ</a>

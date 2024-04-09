@@ -62,10 +62,15 @@
                 </div>
             </form>
 
-            <p class="auth__text">
-                Don’t have an account yet?
-                <a href="<?= ROOT_URL ?>?act=user-sigUp" class="auth__link auth__text-link">Sign Up</a>
-            </p>
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+                <p class="auth__text">
+                    Don’t have an account yet?
+                    <a href="<?= ROOT_URL ?>?act=user-sigUp" class="auth__link auth__text-link">Sign Up</a>
+                </p>
+                <p class="auth__text">
+                    <a href="<?= ROOT_URL ?>?act=forget-password" class="auth__link auth__text-link">Forget password</a>
+                </p>
+            </div>
         </div>
     </div>
 </main>

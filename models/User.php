@@ -22,7 +22,7 @@ function getUserByID($id)
 
 function getUserClientByEmailAndPassword($email, $password)
 {
-    $sql = "SELECT * FROM `user` AS `u` WHERE `u`.email = '$email' AND `u`.password = '$password' AND `u`.type = '0'";
+    $sql = "SELECT * FROM `user` AS `u` WHERE `u`.email = '$email' AND `u`.password = '$password' ";
     $user = singleRecord($sql);
     return $user;
 }
