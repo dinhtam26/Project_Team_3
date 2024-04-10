@@ -5,3 +5,16 @@ NGUYEN VAN A
 OTP
 
 // Cần sửa lỗi thêm cùng 1 sản phẩm mà màu sắc hoặc size khác nhau thì phải là 2 sản phẩm trong giỏ hàng
+
+// Sửa lỗi trang quản lí order trong Admin {
+    Lỗi 1: Khi update thì thông báo là update thành công
+    Lỗi 2: Khi bấm vào trang show phải hiện tổng giá của đơn hàng và trạng thái đơn hàng như thế nào
+    Lỗi 3: Khi chờ xác nhận -> chờ lấy hàng, đã ở lấy hàng thì không quay lại chờ xác nhận được 
+    và khi hoàn tất đơn hàng thì không hủy đơn hàng được
+}
+
+// Sửa lỗi update trong profile
+
+// Sửa lỗi hiển thị thông tin tại trang thanh toán
+
+// Kiểm tra lỗi số lượng tồn kho và số lượng mua (Số lượng mua < số lượng tồn kho)

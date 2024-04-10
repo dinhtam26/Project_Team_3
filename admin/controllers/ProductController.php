@@ -5,12 +5,13 @@ function  listProductAll()
     $arrParams = [
         'view' => "product/index",
         'title' => "List Products",
-        'script' => "datatable"
+
+        "script" => "pagination"
     ];
     $style = "datatable";
 
     $listAllProduct =  listAllProduct();
-
+    $totalProduct   = countAllProduct();
 
     require_once PATH_VIEW_ADMIN . "layout/master.php";
 }
