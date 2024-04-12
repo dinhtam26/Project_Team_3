@@ -34,7 +34,13 @@
     <!-- <script src="<?= ROOT_ASSET_URL ?>client/assets/js/scripts.js"></script> -->
     <!-- Jquery -->
     <!-- <script src="<?= ROOT_ASSET_URL ?>client/assets/js/jquery-1.10.2.min.js"></script> -->
-
+    <style>
+        html,
+        body {
+            /* Để cuộn trang mượt hơn */
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>

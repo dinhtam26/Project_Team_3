@@ -142,7 +142,7 @@ function  updateProduct($id)
         }
         try {
             update($data, 'products', $id);
-            // deleteVariaByProductID($id);
+            deleteVariaByProductID($id, $colorId, $sizeId);
 
             if (!empty($_POST['color']) && !empty($_POST['size'])) {
                 foreach ($_POST['size'] as $sizeID) {
@@ -154,7 +154,7 @@ function  updateProduct($id)
                             'color_id'  => $colorID,
                             'size_id'   => $sizeID,
                         ];
-
+                        deleteVariaByProductID($dataVariation['product_id'], $dataVariation['color_id'], $dataVariation['size_id']);
                         insert($dataVariation, 'variation');
                     }
                 }

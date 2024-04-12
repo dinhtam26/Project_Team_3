@@ -6,11 +6,7 @@ function listImageAll()
         'title' => "List Products",
         'script' => "datatable"
     ];
-
-
     $listAllImage = getListHinhAnh();
-
-
     require_once PATH_VIEW_ADMIN . "layout/master.php";
 }
 

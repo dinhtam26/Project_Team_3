@@ -69,9 +69,9 @@ function getColorForProduct($id)
     return $size;
 }
 
-function deleteVariaByProductID($productID)
+function deleteVariaByProductID($productID, $colorID, $sizeID)
 {
-    $sql = "DELETE FROM variation WHERE product_id = :product_id;";
+    $sql = "DELETE FROM variation WHERE product_id = :product_id AND color_id = '$colorID' AND size_id = '$sizeID'";
     $conn = pdo_get_connection();
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':product_id', $productID);
@@ -84,7 +84,7 @@ function delete_product($id)
 {
     $product = getOneProduct($id);
 
-    deleteVariaByProductID($id);
+    deleteVariaByProductID($id, null, null);
     delete("products", $id);
     $_SESSION['success'] = 'Thao tác thành công!';
     header('Location: ' . ROOT_URL_ADMIN . '?act=products');

@@ -151,8 +151,8 @@ $userInfo = getUserByID($user['id']);
                                 <div class="act-dropdown__inner">
                                     <img src="<?= ROOT_ASSET_URL ?>client/assets/icons/arrow-up.png" alt="" class="act-dropdown__arrow" />
                                     <div class="act-dropdown__top">
-                                        <h2 class="act-dropdown__title">You have <?= $quantityTotal ?> item(s)</h2>
-                                        <a href="<?= ROOT_URL ?>?act=cart-list" class="act-dropdown__view-all">See All</a>
+                                        <h2 class="act-dropdown__title">Bạn có <?= $quantityTotal ?> sản phẩm </h2>
+                                        <a href="<?= ROOT_URL ?>?act=cart-list" class="act-dropdown__view-all">Xem tất cả</a>
                                     </div>
                                     <div class="row row-cols-3 gx-2 act-dropdown__list">
                                         <!-- Cart preview item 1 -->
@@ -165,8 +165,8 @@ $userInfo = getUserByID($user['id']);
                                                     <?php
 
                                                     ?>
-                                                    <h3 style="height: 40px;" class="cart-preview-item__title"><?= $item['name'] ?> <?= ($item['quantity'] > 1) ? "(" . $item['quantity'] . ")" : ""; ?></h3>
-                                                    <p class="cart-preview-item__price"><?= number_format($item['price']) ?></p>
+                                                    <h3 style="height: 50px;" class="cart-preview-item__title"><?= $item['name'] ?> <?= ($item['quantity'] > 1) ? "(" . $item['quantity'] . ")" : ""; ?></h3>
+                                                    <p style="margin-top: 8px" class="cart-preview-item__price"><?= number_format($item['price']) ?></p>
                                                 </article>
                                             </div>
                                         <?php endforeach ?>
@@ -186,7 +186,7 @@ $userInfo = getUserByID($user['id']);
                                     </div>
                                     <div class="act-dropdown__checkout">
                                         <a href="<?= ROOT_URL ?>?act=cart-list" class="btn btn--primary btn--rounded act-dropdown__checkout-btn">
-                                            Check Out All
+                                            Đi tới giỏ hàng
                                         </a>
                                     </div>
                                 </div>
@@ -230,11 +230,11 @@ $userInfo = getUserByID($user['id']);
                                     <a href="<?= ROOT_URL ?>?act=order-history" class="user-menu__link">Đơn hàng</a>
                                 </li>
                                 <li class="user-menu__separate">
-                                    <a href="<?= ROOT_URL ?>?act=profile" class="user-menu__link">Profile</a>
+                                    <a href="<?= ROOT_URL ?>?act=profile" class="user-menu__link">Thông tin người dùng</a>
                                 </li>
                                 <li class="user-menu__separate">
                                     <a href="#!" class="user-menu__link" id="switch-theme-btn">
-                                        <span>Dark mode</span>
+                                        <span>Chế độ sáng tối</span>
                                         <img src="<?= ROOT_ASSET_URL ?>client/assets/icons/sun.svg" alt="" class="icon user-menu__icon" />
                                     </a>
                                 </li>
@@ -242,7 +242,7 @@ $userInfo = getUserByID($user['id']);
                                     <a href="#!" class="user-menu__link">Settings</a>
                                 </li> -->
                                 <li class="user-menu__separate">
-                                    <a href="<?= ROOT_URL ?>?act=user-logout" class="user-menu__link">Logout</a>
+                                    <a href="<?= ROOT_URL ?>?act=user-logout" class="user-menu__link">Đăng xuất</a>
                                 </li>
                             </ul>
                         </div>

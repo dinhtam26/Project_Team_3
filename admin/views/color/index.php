@@ -1,13 +1,13 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">List User</h1>
+    <h1 class="h3 mb-2 text-gray-800">List Color</h1>
 
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Color</h6>
         </div>
         <div class="d-flex justify-content-end mt-2 mr-4">
             <a href="<?= ROOT_URL_ADMIN ?>?act=color-create" class="text-white btn bg-success">Add New Color</a>

@@ -8,7 +8,9 @@ function getHistoryOrder($userID)
     INNER JOIN `variation`      AS `vr` ON `od`.variation_id    = `vr`.id
     INNER JOIN `products`       AS `p`  ON `vr`.`product_id`    = `p`.id  
     INNER JOIN `categories`     AS `c`  ON `c`.`id`             = `p`.cate_id
-    WHERE `o`.user_id = '$userID' AND `p`.id = `vr`.product_id
+    WHERE `o`.user_id = '$userID' 
+    AND `p`.id = `vr`.product_id
+    
     ORDER BY `o`.id DESC";
     $listHistoryOrder = listRecord($sql);
     return  $listHistoryOrder;

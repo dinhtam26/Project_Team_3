@@ -57,9 +57,38 @@
                         <?php endforeach ?>
                     </tbody>
                 </table>
+                <?php
+                $total = 0;
+                foreach ($listProductByOrderID as $key => $value) {
+                    $total += $value['quantity'] * $value['price'];
+                }
+
+                if ($statusDelivery['status_delivery'] == 0) {
+                    $message = "chờ xác nhận";
+                } else if ($statusDelivery['status_delivery'] == 1) {
+                    $message = "Chờ lấy hàng";
+                } else if ($statusDelivery['status_delivery'] == 2) {
+                    $message = "Chờ giao hàng";
+                } else if ($statusDelivery['status_delivery'] == 3) {
+                    $message = "Đã giao hàng thành công";
+                } else if ($statusDelivery['status_delivery'] == -1) {
+                    $message = "Đơn hàng đã bị hủy";
+                }
+
+
+                ?>
+                <div style="display: flex; flex-direction: column; align-items:end">
+                    <div>
+
+                        <p>Trạng thái đơn hàng: <b><?= $message ?></b></p>
+                        <p>Tổng giá tiền của đơn hàng: <b><?= number_format($total) ?></b></p>
+                    </div>
+                </div>
                 <a href="<?= ROOT_URL_ADMIN ?>?act=orders" class="btn btn-success">Back List</a>
             </div>
         </div>
     </div>
 
 </div>
+
+<?php

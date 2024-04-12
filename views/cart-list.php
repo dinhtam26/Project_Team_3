@@ -14,21 +14,7 @@
         <!-- Breadcrumbs -->
         <div class="checkout-container">
             <ul class="breadcrumbs checkout-page__breadcrumbs">
-                <li>
-                    <a href="./" class="breadcrumbs__link">
-                        Home
-                        <img src="./assets/icons/arrow-right.svg" alt="" />
-                    </a>
-                </li>
-                <li>
-                    <a href="./checkout.html" class="breadcrumbs__link">
-                        Checkout
-                        <img src="./assets/icons/arrow-right.svg" alt="" />
-                    </a>
-                </li>
-                <li>
-                    <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">Shipping</a>
-                </li>
+
             </ul>
         </div>
 
@@ -59,33 +45,48 @@
                                                             <?= $value['name'] ?>
                                                         </a>
                                                     </h3>
-                                                    <p class="cart-item__price-wrap">
-                                                        <?= number_format($value['price'], 0, ',', '.') ?>| <span class="cart-item__status">In Stock</span>
-                                                    </p>
-                                                    <div class="cart-item__ctrl cart-item__ctrl--md-block">
-                                                        <!-- Trừ -->
-                                                        <a href="<?= ROOT_URL . '?act=cart-dec&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="btn btn-danger">
-                                                            <div class="cart-item__input">
-                                                                -
-                                                            </div>
-                                                        </a>
 
-                                                        <div class="cart-item__input">
-                                                            <button class="cart-item__input-btn">
-                                                                <img class="icon" src="./assets/icons/minus.svg" alt="" />
-                                                            </button>
-                                                            <span><?= $value['quantity'] ?></span>
-                                                            <button class="cart-item__input-btn">
-                                                                <img class="icon" src="./assets/icons/plus.svg" alt="" />
-                                                            </button>
+                                                    <p class="cart-item__price-wrap">
+                                                        <?= number_format($value['price_1'], 0, ',', '.') ?>| <span class="cart-item__status">In Stock</span>
+                                                    </p>
+                                                    <div style="display: flex; align-items: center;">
+                                                        <div class="cart-item__ctrl cart-item__ctrl--md-block">
+                                                            <!-- Trừ -->
+                                                            <a href="<?= ROOT_URL . '?act=cart-dec&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="btn btn-danger">
+                                                                <div class="cart-item__input">
+                                                                    -
+                                                                </div>
+                                                            </a>
+
+                                                            <div class="cart-item__input">
+                                                                <button class="cart-item__input-btn">
+                                                                    <img class="icon" src="./assets/icons/minus.svg" alt="" />
+                                                                </button>
+                                                                <span><?= $value['quantity'] ?></span>
+                                                                <button class="cart-item__input-btn">
+                                                                    <img class="icon" src="./assets/icons/plus.svg" alt="" />
+                                                                </button>
+                                                            </div>
+
+                                                            <!-- Cộng -->
+                                                            <?php if ($value['quantity'] >= $value['quantity_1']) {  ?>
+                                                                <a href="" class="btn btn-danger">
+                                                                    <div class="cart-item__input">
+                                                                        +
+                                                                    </div>
+                                                                </a>
+                                                            <?php } else { ?>
+                                                                <a href="<?= ROOT_URL . '?act=cart-inc&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="btn btn-danger">
+                                                                    <div class="cart-item__input">
+                                                                        +
+                                                                    </div>
+                                                                </a>
+                                                            <?php }  ?>
                                                         </div>
 
-                                                        <!-- Cộng -->
-                                                        <a href="<?= ROOT_URL . '?act=cart-inc&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="btn btn-danger">
-                                                            <div class="cart-item__input">
-                                                                +
-                                                            </div>
-                                                        </a>
+                                                        <div>
+                                                            <p> <?= $value['quantity_1'] ?> Sản phẩm có sẵn</p>
+                                                        </div>
                                                     </div>
                                                     <div>
                                                         <?php $sizeName = getSizeName($value['size']) ?>
@@ -95,7 +96,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="cart-item__content-right">
-                                                    <p class="cart-item__total-price"><?= number_format(($value['price'] * $value['quantity']), 0, ",", ".") ?></p>
+                                                    <p class="cart-item__total-price"><?= number_format(($value['price_1'] * $value['quantity']), 0, ",", ".") ?></p>
                                                     <div class="cart-item__ctrl">
 
                                                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="<?= ROOT_URL . '?act=cart-del&productID=' . $value['id'] ?>&size=<?= $value['size'] ?>&color=<?= $value['color'] ?>" class="cart-item__ctrl-btn js-toggle" toggle-target="#delete-confirm">
@@ -138,20 +139,23 @@
 
                 <?php if (empty($_SESSION['cart'])) {
                 } else { ?>
+                    <?php if (!empty($_SESSION['cart'])) {
+                        $total = 0;
+                        $quantity = 0;
+                        foreach ($_SESSION['cart'] as $key => $value) {
+                            $total += ($value['price_1'] * $value['quantity']);
+                            $quantity += $value['quantity'];
+                        }
+                    } ?>
                     <div class="col-4 col-xl-12">
                         <div class="cart-info">
                             <div class="cart-info__row">
                                 <span>Tất cả sản phẩm <span class="cart-info__sub-label">(items)</span></span>
-                                <span><?= count($_SESSION['cart']); ?></span>
+                                <span><?= $quantity ?></span>
                             </div>
                             <div class="cart-info__row">
                                 <span>Tổng tiền<span class="cart-info__sub-label"></span></span>
-                                <?php if (!empty($_SESSION['cart'])) {
-                                    $total = 0;
-                                    foreach ($_SESSION['cart'] as $key => $value) {
-                                        $total += ($value['price'] * $value['quantity']);
-                                    }
-                                } ?>
+
                                 <span><?= number_format($total, 0, ",", ".") ?> VND</span>
                             </div>
                             <div class="cart-info__row">

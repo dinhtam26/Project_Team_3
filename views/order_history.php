@@ -65,7 +65,7 @@ foreach ($listOrderByStatus as $key => $value) {
                                     <li>
                                         <a <?php if ($_GET['status'] == '1') {
                                                 echo 'style="color: red"';
-                                            } ?> href="<?= ROOT_URL ?>?act=order-history&status=1">Vận chuyển </a>
+                                            } ?> href="<?= ROOT_URL ?>?act=order-history&status=1">Chờ lấy hàng </a>
                                     </li>
                                     <li>
                                         <a <?php if ($_GET['status'] == '2') {
@@ -140,9 +140,6 @@ foreach ($listOrderByStatus as $key => $value) {
                                     <?php
                                     $total = 0;
                                     foreach ($items as $key => $value) {
-
-
-
                                         $total += $items[$key]['price'] * $items[$key]['quantity'];
                                         if ($items[$key]['code_order'] == $value['code_order']) {
 

@@ -75,7 +75,7 @@ if (!function_exists('total_price')) {
         $total = 0;
         if (!empty($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $key => $value) {
-                $price = $value['price'];
+                $price = $value['price_1'];
                 $total += $price * $value['quantity'];
             }
             return $flag ? number_format($total) : $total;

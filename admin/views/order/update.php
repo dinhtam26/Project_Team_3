@@ -6,6 +6,17 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary"></h6>
         </div>
+
+        <?php if (isset($_COOKIE['successOrder'])) { ?>
+            <div class="alert alert-success">
+                <ul>
+                    <?php
+
+                    echo '<li> ' . $_COOKIE['successOrder'] . ' </li>';
+                    ?>
+                </ul>
+            </div>
+        <?php  } ?>
         <div class="card-body">
 
             <div class="">
@@ -22,14 +33,35 @@
                                     <div class="mt-3 mb-3">
                                         <label for="">Trạng thái đơn hàng</label>
                                         <select class="form-control" name="status_delivery" id="">
-
-                                            <option <?php if ($statusDelivery['status_delivery'] == 0) echo "style='color: red' selected" ?> value="0">Chờ xác nhận</option>
-                                            <option <?php if ($statusDelivery['status_delivery'] == 1) echo "style='color: red' selected"  ?> value="1">Chờ lấy hàng</option>
-                                            <option <?php if ($statusDelivery['status_delivery'] == 2) echo "style='color: red' selected"  ?> value="2">Chờ giao hàng</option>
-                                            <option <?php if ($statusDelivery['status_delivery'] == 3) echo "style='color: red' selected"  ?> value="3">Đã giao hàng</option>
-                                            <option <?php if ($statusDelivery['status_delivery'] == -1) echo "style='color: red' selected"  ?> value="-1">Hủy đơn hàng</option>
+                                            <?php if ($statusDelivery['status_delivery'] == 0) { ?>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 0) echo "style='color: red' selected" ?> value="0">Chờ xác nhận</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 1) echo "style='color: red' selected"  ?> value="1">Chờ lấy hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 2) echo "style='color: red' selected"  ?> value="2">Chờ giao hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 3) echo "style='color: red' selected"  ?> value="3">Đã giao hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == -1) echo "style='color: red' selected"  ?> value="-1">Hủy đơn hàng</option>
                                             <?php
-                                            ?>
+                                            } else if ($statusDelivery['status_delivery'] == 1) { ?>
+                                                <option disabled style="background: #ccc" value="0">Chờ xác nhận</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 1) echo "style='color: red' selected"  ?> value="1">Chờ lấy hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 2) echo "style='color: red' selected"  ?> value="2">Chờ giao hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 3) echo "style='color: red' selected"  ?> value="3">Đã giao hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == -1) echo "style='color: red' selected"  ?> value="-1">Hủy đơn hàng</option>
+                                            <?php } else if ($statusDelivery['status_delivery'] == 2) {  ?>
+                                                <option disabled style="background: #ccc" value="0">Chờ xác nhận</option>
+                                                <option disabled style="background: #ccc" value="1">Chờ lấy hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 2) echo "style='color: red' selected"  ?> value="2">Chờ giao hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 3) echo "style='color: red' selected"  ?> value="3">Đã giao hàng</option>
+                                                <option disabled style="background: #ccc" value="-1">Hủy đơn hàng</option>
+
+                                            <?php } else if ($statusDelivery['status_delivery'] == 3) {  ?>
+
+                                                <option disabled style="background: #ccc" value="0">Chờ xác nhận</option>
+                                                <option disabled style="background: #ccc" value="1">Chờ lấy hàng</option>
+                                                <option disabled style="background: #ccc" value="2">Chờ giao hàng</option>
+                                                <option <?php if ($statusDelivery['status_delivery'] == 3) echo "style='color: red' selected"  ?> value="3">Đã giao hàng</option>
+                                                <option disabled style="background: #ccc" value="-1">Hủy đơn hàng</option>
+
+                                            <?php  } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -48,11 +80,11 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
 <?php
-echo "<pre/>";
-print_r($statusDelivery);
-echo "<pre/>";
+$_SESSION['status_delivery'] = $statusDelivery['status_delivery'];
 ?>

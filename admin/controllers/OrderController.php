@@ -19,6 +19,7 @@ function showOrder($id)
     ];
 
     $listProductByOrderID =  getProductByOrderId($id);
+    $statusDelivery = getStatusDelivery($id);
     require_once PATH_VIEW_ADMIN . "layout/master.php";
 }
 
@@ -32,8 +33,10 @@ function updateOrder($id)
     if (!empty($_POST)) {
         $status_delivery = $_POST['status_delivery'];
         updateStatusDelivery($status_delivery, $id);
+        setcookie("successOrder", "Cập nhật trạng thái thành công", time() + 3);
     }
 
     $statusDelivery = getStatusDelivery($id);
+
     require_once PATH_VIEW_ADMIN . "layout/master.php";
 }

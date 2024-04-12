@@ -35,6 +35,9 @@ function productDetail($id, $sizeId, $colorID)
     $breadcrumbs = getBreadcrumbs($id);
     // Comment
     $listComment = getAllCommentByProductId($id);
+
+    // Lấy giá và số lượng theo color và id
+    $priceAndQuantity = getQuanAndPriceByColorSize($id, $sizeId, $colorID);
     if (isset($_SESSION['user'])) {
         insertComment($getOneProduct['id'], $_SESSION['user']['id']);
     }

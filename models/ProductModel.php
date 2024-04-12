@@ -46,6 +46,18 @@ function getOneProduct($id)
     return $product;
 }
 
+// Lấy giá và số lượng theo size và color
+function getQuanAndPriceByColorSize($productID, $sizeID, $colorID)
+{
+    $sql = "SELECT `vr`.price, `vr`.quantity 
+            FROM variation AS `vr` 
+            WHERE `vr`.product_id = '$productID' 
+            AND `vr`.size_id = '$sizeID' 
+            AND `vr`.color_id = '$colorID'";
+    $quantityPrice = singleRecord($sql);
+    return $quantityPrice;
+}
+
 function getVariationForProduct($productID)
 {
     $sql = "SELECT `c`.id as c_id, `c`.name as color, `s`.id as s_id, `s`.name as size, `vr`.quantity

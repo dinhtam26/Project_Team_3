@@ -7,10 +7,10 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Size</h6>
         </div>
         <div class="d-flex justify-content-end mt-2 mr-4">
-            <a href="<?= ROOT_URL_ADMIN ?>?act=size-create" class="text-white btn bg-success">Add New Color</a>
+            <a href="<?= ROOT_URL_ADMIN ?>?act=size-create" class="text-white btn bg-success">Add New Size</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

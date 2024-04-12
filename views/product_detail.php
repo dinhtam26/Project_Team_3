@@ -78,10 +78,10 @@
                                 <div class="col-5 col-xxl-6 col-xl-12">
                                     <div class="prod-prop">
                                         <img src="<?= ROOT_ASSET_URL ?>client//assets/icons/star.svg" alt="" class="prod-prop__icon" />
-                                        <h4 class="prod-prop__title">(3.5) 1100 reviews</h4>
+                                        <h4 class="prod-prop__title">(3.5) 1100 đánh giá </h4>
                                     </div>
                                     <!-- SIZE -->
-                                    <label for="" class="form__label prod-info__label">Size</label>
+                                    <label for="" class="form__label prod-info__label">Kích cỡ</label>
                                     <div class="filter__form-group">
                                         <div class="form__tags">
                                             <?php foreach ($size as $key => $value) : ?>
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                     <!-- Color -->
-                                    <label for="" class="form__label prod-info__label">Color</label>
+                                    <label for="" class="form__label prod-info__label">Màu sắc</label>
                                     <div class="filter__form-group">
                                         <div class="form__tags">
                                             <?php
@@ -137,30 +137,33 @@
                                         <div class="prod-prop">
                                             <img src="<?= ROOT_ASSET_URL ?>client//assets/icons/bag.svg" alt="" class="prod-prop__icon icon" />
                                             <div>
-                                                <h4 class="prod-prop__title">Pickup</h4>
-                                                <p class="prod-prop__desc">Out of 2 store, today</p>
+                                                <h4 class="prod-prop__title">Số lượng</h4>
+                                                <p class="prod-prop__desc"><?= (!isset($_GET['size_id'])  || !isset($_GET['color_id'])) ? $getOneProduct['quantity'] : $priceAndQuantity['quantity']  ?></p>
                                             </div>
                                         </div>
                                         <div class="prod-info__card">
-                                            <div class="prod-info__row">
-                                                <span class="prod-info__price" style="text-decoration: line-through;"><?= number_format($getOneProduct['price'], 0, ',', '.') ?></span>
-                                                <span class="prod-info__tax"><?= $getOneProduct['sale'] ?>%</span>
-                                            </div>
                                             <?php
+
                                             $price = $getOneProduct['price'] - ($getOneProduct['price'] * ($getOneProduct['sale'] / 100));
                                             $price = round($price, -3);
+                                            $price = (!isset($_GET['size_id']) || !isset($_GET['color_id'])) ? $getOneProduct['price'] : $priceAndQuantity['price'];
                                             ?>
-                                            <p class="prod-info__total-price"><?= number_format($price, 0, ',', '.') ?></p>
+                                            <div class="prod-info__row">
+                                                <span class="prod-info__price" style="text-decoration: line-through;"><?= number_format($price) ?></span>
+                                                <span class="prod-info__tax"><?= $getOneProduct['sale'] ?>%</span>
+                                            </div>
+
+                                            <p class="prod-info__total-price"><?= number_format($price) ?></p>
                                             <div class="prod-info__row">
                                                 <!-- Điều kiện -->
                                                 <?php if ((empty($_GET['size_id'])) || empty($_GET['color_id'])) { ?>
                                                     <a href="<?= ROOT_URL ?>?act=cart-add&productID=<?= $getOneProduct['id'] ?>&quantity=1&size=<?= $_GET['size_id'] ?? "" ?>&color=<?= $_GET['color_id'] ?? "" ?>" style="pointer-events: none; opacity: 0.5;" class="btn btn--primary prod-info__add-to-cart">
-                                                        Add to cart
+                                                        Thêm vào giỏ hàng
                                                     </a>
 
                                                 <?php } else { ?>
                                                     <a href="<?= ROOT_URL ?>?act=cart-add&productID=<?= $getOneProduct['id'] ?>&quantity=1&size=<?= $_GET['size_id'] ?? "" ?>&color=<?= $_GET['color_id'] ?? "" ?>" class="btn btn--primary prod-info__add-to-cart">
-                                                        Add to cart
+                                                        Thêm vào giỏ hàng
                                                     </a>
                                                 <?php } ?>
                                                 <button class="like-btn prod-info__like-btn">
@@ -182,10 +185,10 @@
         <div class="product-container">
             <div class="">
                 <ul class="prod-tab__list">
-                    <li class="prod-tab__item prod-tab__item--current">Description</li>
-                    <li class="prod-tab__item prod-tab__item--current"><a href="#review">Review</a></li>
-                    <li class="prod-tab__item prod-tab__item--current"><a href="#similar">Similar</a></li>
-                    <li class="prod-tab__item prod-tab__item--current"><a href="#comment">Comment</a></li>
+                    <li class="prod-tab__item prod-tab__item--current">Mô tả sản phẩm</li>
+                    <li class="prod-tab__item prod-tab__item--current"><a href="#review">Đánh giá </a></li>
+                    <li class="prod-tab__item prod-tab__item--current"><a href="#similar">Sản phẩm liên quan</a></li>
+                    <li class="prod-tab__item prod-tab__item--current"><a href="#comment">Bình luận</a></li>
                 </ul>
                 <div class="prod-tab__contents">
                     <div class="prod-tab__content prod-tab__content--current">
@@ -368,9 +371,7 @@
     ?>
 </main>
 <?php
-// echo "<pre/>";
-// print_r($productByCate);
-// echo "<pre/>";
+
 
 // echo "<pre/>";
 // print_r($breadcrumbs);

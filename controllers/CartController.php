@@ -19,6 +19,7 @@ function cartAdd($productID, $quantity = 0, $size, $color)
 
     //Tạo một khóa duy nhất cho sản phẩm dựa trên productID, size, color
     $productKey = $productID . "-" . $size . "-" . $color;
+    $priceAndQuantity = getQuanAndPriceByColorSize($productID, $size, $color);
 
     // Thêm sản phẩm vào session cart: $_SESSION['cart']['$productID'] = $product
     // Tiếp tục thêm sản phẩm vào cart_items 
@@ -29,8 +30,8 @@ function cartAdd($productID, $quantity = 0, $size, $color)
         $_SESSION['cart'][$productKey]['variation']   = $variationID['id'];
         $_SESSION['cart'][$productKey]['size']   = $size;
         $_SESSION['cart'][$productKey]['color']   = $color;
-
-
+        $_SESSION['cart'][$productKey]['price_1']    = $priceAndQuantity['price'];
+        $_SESSION['cart'][$productKey]['quantity_1']    = $priceAndQuantity['quantity'];
 
 
         // $data = [
@@ -59,6 +60,7 @@ function cartList()
         'title'     => "Trang giỏ hàng",
         'script'    => "home_bootstrap"
     ];
+
 
     // debug($_SESSION['cart']);
     $cartID = getCartId($_SESSION['user']['id']);

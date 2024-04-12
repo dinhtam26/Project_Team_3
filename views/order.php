@@ -46,27 +46,7 @@
              <!-- Breadcrumbs -->
              <div class="checkout-container">
                  <ul class="breadcrumbs checkout-page__breadcrumbs">
-                     <li>
-                         <a href="./" class="breadcrumbs__link">
-                             Home
-                             <img src="./assets/icons/arrow-right.svg" alt="" />
-                         </a>
-                     </li>
-                     <li>
-                         <a href="./checkout.html" class="breadcrumbs__link">
-                             Checkout
-                             <img src="./assets/icons/arrow-right.svg" alt="" />
-                         </a>
-                     </li>
-                     <li>
-                         <a href="./shipping.html" class="breadcrumbs__link">
-                             Shipping
-                             <img src="./assets/icons/arrow-right.svg" alt="" />
-                         </a>
-                     </li>
-                     <li>
-                         <a href="#!" class="breadcrumbs__link breadcrumbs__link--current">Payment method</a>
-                     </li>
+
                  </ul>
              </div>
 
@@ -103,11 +83,11 @@
                                              <tr style="align-items: center; border-top: 1px solid #ccc; ">
                                                  <td><img width="60" src="<?= ROOT_UPLOAD_URL ?><?= $item['image'] ?>" alt=""></td>
                                                  <td><?= $item['name'] ?></td>
-                                                 <td><?= number_format($item['price']) ?></td>
+                                                 <td><?= number_format($item['price_1']) ?></td>
                                                  <td><?= $sizeName['name'] ?></td>
                                                  <td><?= $colorName['name'] ?></td>
                                                  <td><?= $item['quantity'] ?></td>
-                                                 <td style="font-weight: 600"> <?= number_format($item['price'] * $item['quantity']) ?></td>
+                                                 <td style="font-weight: 600"> <?= number_format($item['price_1'] * $item['quantity']) ?></td>
                                              </tr>
                                      <?php endforeach;
                                         endif ?>

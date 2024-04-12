@@ -11,9 +11,10 @@ function orderCheckout()
 
 function orderPurchase()
 {
-
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    date_default_timezone_get();
     if (!empty($_POST) && !empty($_SESSION['cart'])) {
-        debug($_POST);
+
         // $data = array_pop($_POST);
         $data['status_payment'] = $_POST['status_payment'];
         $data['fullname']       = $_POST['fullname'];
@@ -34,7 +35,7 @@ function orderPurchase()
                 $orderDetail = [
                     'order_id'     =>  $orderID,
                     "variation_id" =>  $item['variation'],
-                    "price"        => $item['price'],
+                    "price"        => $item['price_1'],
                     "quantity"     => $item['quantity'],
                 ];
 
@@ -55,7 +56,7 @@ function orderPurchase()
                 $orderDetail = [
                     'order_id'     =>  $orderID,
                     "variation_id" =>  $item['variation'],
-                    "price"        => $item['price'],
+                    "price"        => $item['price_1'],
                     "quantity"     => $item['quantity'],
                 ];
 
