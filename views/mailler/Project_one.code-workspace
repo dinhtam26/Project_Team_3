@@ -1,0 +1,13 @@
+{
+    "folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../PHP_Zend"
+		}
+	],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "Bài34_Dự án 1"
+    }
+}
